@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
-import 'register.dart';
 
-import 'package:firebase_core/firebase_core.dart';
+import 'qrGenerator.dart';
+import 'qrScanner.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MaterialApp(home: ChoosingPage()));
+class InfoDetails extends StatefulWidget {
+  @override
+  _InfoDetailsState createState() => _InfoDetailsState();
 }
 
-class ChoosingPage extends StatelessWidget {
+class _InfoDetailsState extends State<InfoDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('choosing page'),
+        title: Text('detail info page'),
       ),
       body: Center(
         child: Column(
@@ -25,9 +23,9 @@ class ChoosingPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage()));
+                      MaterialPageRoute(builder: (context) => GeneratePage()));
                 },
-                child: Text('login'),
+                child: Text('generator'),
               ),
             ),
             Padding(
@@ -35,9 +33,9 @@ class ChoosingPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()));
+                      MaterialPageRoute(builder: (context) => QRViewExample()));
                 },
-                child: Text('register'),
+                child: Text('scanner'),
               ),
             ),
           ],

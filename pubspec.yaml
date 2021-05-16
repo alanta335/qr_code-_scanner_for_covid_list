@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   qr_flutter:
   qr_code_scanner:
+  firebase_core:
+  firebase_auth:
 
 
   # The following adds the Cupertino Icons font to your application.

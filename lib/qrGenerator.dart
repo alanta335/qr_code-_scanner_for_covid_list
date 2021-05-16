@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class GeneratePage extends StatefulWidget {
   @override
@@ -9,7 +10,8 @@ class GeneratePage extends StatefulWidget {
 }
 
 class GeneratePageState extends State<GeneratePage> {
-  String qrData = "hi hello"; // already generated qr code when the page opens
+  String qrData = FirebaseAuth.instance.currentUser!
+      .uid; // already generated qr code when the page opens
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,9 @@
 
 # qr2
 
+the min sdk version is increased from 16 to 20 in android manifest file.
+the environment sdk is increased from 2.7 to 2.12 pubspec file.
+
 A new Flutter project.
 
 ## Getting Started
