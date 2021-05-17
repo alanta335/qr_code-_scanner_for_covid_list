@@ -4,6 +4,8 @@ import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'mreader.dart';
+
 class GeneratePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => GeneratePageState();
@@ -31,9 +33,16 @@ class GeneratePageState extends State<GeneratePage> {
               data: qrData,
             ),
             Text(
-              "New QR Link Generator",
+              "id is $qrData",
               style: TextStyle(fontSize: 20.0),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserInformation()));
+              },
+              child: Text('visited person data'),
+            )
           ],
         ),
       ),
