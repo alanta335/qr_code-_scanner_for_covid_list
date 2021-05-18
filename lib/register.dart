@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'info.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -11,6 +12,9 @@ class _RegisterPageState extends State<RegisterPage> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   TextEditingController emailController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController pnoController = TextEditingController();
+  TextEditingController addresController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repasswordController = TextEditingController();
 
@@ -24,8 +28,29 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Expanded(
           child: Column(
             children: [
-              SizedBox(
-                height: 20,
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: nameController,
+                  decoration: InputDecoration(
+                    hintText: 'enter your name here',
+                    labelText: 'name',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.name,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: pnoController,
+                  decoration: InputDecoration(
+                    hintText: 'enter your phone no here',
+                    labelText: 'phone number',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -37,6 +62,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.emailAddress,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: addresController,
+                  decoration: InputDecoration(
+                    hintText: 'enter your addres here',
+                    labelText: 'addres',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.streetAddress,
                 ),
               ),
               Padding(
@@ -83,6 +120,17 @@ class _RegisterPageState extends State<RegisterPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => InfoDetails()));
+                      FirebaseFirestore.instance
+                          .collection(
+                              '${FirebaseAuth.instance.currentUser!.uid}')
+                          .add({
+                        'name': nameController.text,
+                        'email': emailController.text,
+                        'pno': pnoController.text,
+                        'addres': addresController.text,
+                        'timestamp': DateTime.now().toString(),
+                        'userId': FirebaseAuth.instance.currentUser!.uid,
+                      });
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
                         print('The password provided is too weak.');
