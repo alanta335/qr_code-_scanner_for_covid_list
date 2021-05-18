@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserInformation extends StatefulWidget {
   @override
@@ -10,9 +11,12 @@ class UserInformation extends StatefulWidget {
 class _UserInformationState extends State<UserInformation> {
   @override
   Widget build(BuildContext context) {
-    CollectionReference users =
-        FirebaseFirestore.instance.collection('visited');
-
+    CollectionReference users = FirebaseFirestore.instance
+        .collection('USERS')
+        .doc('${FirebaseAuth.instance.currentUser!.uid}')
+        .collection('visited');
+    //.collection('visited');
+    print(FirebaseAuth.instance.currentUser!.uid);
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -29,8 +33,7 @@ class _UserInformationState extends State<UserInformation> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               return Card(
                 child: new ListTile(
-                  title: new Text(document.get('text')),
-                  //subtitle: new Text(document.('')),
+                  title: new Text(document.get('Name')),
                 ),
               );
             }).toList(),

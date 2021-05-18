@@ -121,9 +121,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           MaterialPageRoute(
                               builder: (context) => InfoDetails()));
                       FirebaseFirestore.instance
-                          .collection(
-                              '${FirebaseAuth.instance.currentUser!.uid}')
-                          .add({
+                          .collection('USERS')
+                          .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                          .set({
                         'name': nameController.text,
                         'email': emailController.text,
                         'pno': pnoController.text,
