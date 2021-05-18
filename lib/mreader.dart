@@ -1,34 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-class VisitedData extends StatefulWidget {
-  @override
-  _VisitedDataState createState() => _VisitedDataState();
-}
-
-class _VisitedDataState extends State<VisitedData> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('page 2'),
-      ),
-      body: SafeArea(
-        child: Expanded(
-          child: Column(
-            children: [
-              ElevatedButton(
-                onPressed: () async {},
-                child: Text('add data'),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserInformation extends StatefulWidget {
   @override
@@ -36,12 +9,14 @@ class UserInformation extends StatefulWidget {
 }
 
 class _UserInformationState extends State<UserInformation> {
-  List a = [];
   @override
   Widget build(BuildContext context) {
-    CollectionReference users =
-        FirebaseFirestore.instance.collection('visited');
-
+    CollectionReference users = FirebaseFirestore.instance
+        .collection('USERS')
+        .doc('${FirebaseAuth.instance.currentUser!.uid}')
+        .collection('visited');
+    //.collection('visited');
+    print(FirebaseAuth.instance.currentUser!.uid);
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -56,9 +31,10 @@ class _UserInformationState extends State<UserInformation> {
         return Scaffold(
           body: new ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              return new ListTile(
-                title: new Text(document.data().toString()),
-                subtitle: new Text(document.data().toString()),
+              return Card(
+                child: new ListTile(
+                  title: new Text(document.get('Name')),
+                ),
               );
             }).toList(),
           ),

@@ -12,7 +12,7 @@ class Page2Screen extends StatefulWidget {
 class _Page2ScreenState extends State<Page2Screen> {
   var storeid;
   _Page2ScreenState({@required this.storeid});
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController messageController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,21 +27,26 @@ class _Page2ScreenState extends State<Page2Screen> {
                 child: Text('data is $storeid'),
               ),
               TextField(
-                controller: usernameController,
+                controller: messageController,
                 decoration: InputDecoration(
-                  hintText: 'enter your password here',
-                  labelText: 'password',
+                  hintText: 'enter any message if there is',
+                  labelText: 'data',
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.name,
               ),
               ElevatedButton(
                 onPressed: () async {
-                  FirebaseFirestore.instance.collection('visited').add({
-                    'text': usernameController.text,
-                    'timestamp': DateTime.now().millisecondsSinceEpoch,
-                    'name': FirebaseAuth.instance.currentUser!.displayName,
+                  FirebaseFirestore.instance.collection('$storeid').add({
+                    'message': messageController.text,
+                    'timestamp': DateTime.now().toString(),
                     'userId': FirebaseAuth.instance.currentUser!.uid,
+                  });
+                  FirebaseFirestore.instance
+                      .collection('${FirebaseAuth.instance.currentUser!.uid}')
+                      .add({
+                    'timestamp': DateTime.now().toString(),
+                    'visited_shop_id': storeid,
                   });
                 },
                 child: Text('add data'),
