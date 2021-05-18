@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserInformation extends StatefulWidget {
@@ -23,17 +22,25 @@ class _UserInformationState extends State<UserInformation> {
         if (snapshot.hasError) {
           return Text('Something went wrong');
         }
-
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Text("Loading");
         }
 
         return Scaffold(
-          body: new ListView(
+          appBar: AppBar(
+            title: Text('Visited DATABASE'),
+          ),
+          body: ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              return Card(
-                child: new ListTile(
-                  title: new Text(document.get('Name')),
+              return Expanded(
+                child: Card(
+                  child: ListTile(
+                    title: Text(
+                        '${document.get('name')}   ${document.get('phno')}'),
+                    subtitle: Text(
+                        '${document.get('address')}   ${document.get('time')}'),
+                    isThreeLine: true,
+                  ),
                 ),
               );
             }).toList(),

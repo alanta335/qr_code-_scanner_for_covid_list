@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // new
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import 'mreader.dart';
 
 class Page2Screen extends StatefulWidget {
   final data;
@@ -26,31 +28,45 @@ class _Page2ScreenState extends State<Page2Screen> {
               Center(
                 child: Text('data is $storeid'),
               ),
-              TextField(
-                controller: messageController,
-                decoration: InputDecoration(
-                  hintText: 'enter any message if there is',
-                  labelText: 'data',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.name,
-              ),
               ElevatedButton(
                 onPressed: () async {
-                  FirebaseFirestore.instance.collection('$storeid').add({
-                    'message': messageController.text,
-                    'timestamp': DateTime.now().toString(),
-                    'userId': FirebaseAuth.instance.currentUser!.uid,
-                  });
+                  DocumentSnapshot user = await FirebaseFirestore.instance
+                      .collection('USERS')
+                      .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                      .get();
+                  DocumentSnapshot store = await FirebaseFirestore.instance
+                      .collection('USERS')
+                      .doc('$storeid')
+                      .get();
                   FirebaseFirestore.instance
-                      .collection('${FirebaseAuth.instance.currentUser!.uid}')
-                      .add({
-                    'timestamp': DateTime.now().toString(),
-                    'visited_shop_id': storeid,
+                      .collection('USERS')
+                      .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                      .collection('visited')
+                      .doc()
+                      .set({
+                    'name': store['name'],
+                    'address': store['addres'],
+                    'phno': store['pno'],
+                    'visitedId': store['userId'],
+                    'time': DateTime.now().toString(),
+                  });
+                  print(store['name']);
+                  print(user['name']);
+                  FirebaseFirestore.instance
+                      .collection('USERS')
+                      .doc('$storeid')
+                      .collection('visited')
+                      .doc()
+                      .set({
+                    'name': user['name'],
+                    'address': user['addres'],
+                    'phno': user['pno'],
+                    'visitedId': user['userId'],
+                    'time': DateTime.now().toString(),
                   });
                 },
                 child: Text('add data'),
-              )
+              ),
             ],
           ),
         ),
