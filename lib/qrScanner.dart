@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'main.dart';
 import 'page2.dart';
 
 class QRViewExample extends StatefulWidget {
@@ -74,12 +75,12 @@ class _QRViewExampleState extends State<QRViewExample> {
                       )
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Center(
-                        child: Container(
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
                           margin: EdgeInsets.all(8),
                           child: ElevatedButton(
                             onPressed: () {
@@ -93,8 +94,18 @@ class _QRViewExampleState extends State<QRViewExample> {
                                 style: TextStyle(fontSize: 20)),
                           ),
                         ),
-                      ),
-                    ],
+                        Container(
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ChoosingPage()));
+                              },
+                              child: Text('LOG OUT')),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

@@ -10,20 +10,31 @@ class UserInformation extends StatefulWidget {
 class _UserInformationState extends State<UserInformation> {
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance
+    Query users = FirebaseFirestore.instance
         .collection('USERS')
         .doc('${FirebaseAuth.instance.currentUser!.uid}')
-        .collection('visited');
+        .collection('visited')
+        .orderBy('time', descending: true);
     //.collection('visited');
     print(FirebaseAuth.instance.currentUser!.uid);
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text('Something went wrong');
+          return Scaffold(
+            body: Center(
+              child: SafeArea(
+                child: Text('something is wrong'),
+              ),
+            ),
+          );
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return Scaffold(
+            body: SafeArea(
+              child: Text('LOADING'),
+            ),
+          );
         }
 
         return Scaffold(
@@ -31,16 +42,18 @@ class _UserInformationState extends State<UserInformation> {
             title: Text('Visited DATABASE'),
           ),
           body: ListView(
+            addAutomaticKeepAlives: false,
+            cacheExtent: 300,
+            reverse: false,
+            //physics: ,
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              return Expanded(
-                child: Card(
-                  child: ListTile(
-                    title: Text(
-                        '${document.get('name')}   ${document.get('phno')}'),
-                    subtitle: Text(
-                        '${document.get('address')}   ${document.get('time')}'),
-                    isThreeLine: true,
-                  ),
+              return Card(
+                child: ListTile(
+                  title: Text('${document.get('name')}'),
+                  subtitle: Text(
+                      'Address : ${document.get('address')}\nVisited on ${document.get('time')}'),
+                  trailing: Text('Phone Number:${document.get('phno')}'),
+                  isThreeLine: true,
                 ),
               );
             }).toList(),

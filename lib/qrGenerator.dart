@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'main.dart';
 import 'mreader.dart';
 
 class GeneratePage extends StatefulWidget {
@@ -36,12 +37,28 @@ class GeneratePageState extends State<GeneratePage> {
               "id is $qrData",
               style: TextStyle(fontSize: 20.0),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => UserInformation()));
-              },
-              child: Text('visited person data'),
+            Center(
+              child: Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UserInformation()));
+                    },
+                    child: Text('visited person data'),
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ChoosingPage()));
+                      },
+                      child: Text('LOG OUT')),
+                ],
+              ),
             )
           ],
         ),

@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'info.dart';
+import 'qrGenerator.dart';
+import 'qrScanner.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -52,12 +54,26 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed: () async {
                   try {
+                    // ignore: unused_local_variable
                     UserCredential userCredential = await FirebaseAuth.instance
                         .signInWithEmailAndPassword(
                             email: emailController.text,
                             password: passwordController.text);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => InfoDetails()));
+                    DocumentSnapshot user = await FirebaseFirestore.instance
+                        .collection('USERS')
+                        .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                        .get();
+                    if (user['user_type'] == true) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QRViewExample()));
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GeneratePage()));
+                    }
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
                       print('No user found for that email.');

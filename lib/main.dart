@@ -34,10 +34,24 @@ class ChoosingPage extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterPage(true)));
                 },
-                child: Text('register'),
+                child: Text('register as customer'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterPage(false)));
+                },
+                child: Text('register as store owner'),
               ),
             ),
           ],

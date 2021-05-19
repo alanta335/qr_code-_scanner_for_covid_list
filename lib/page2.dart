@@ -67,6 +67,14 @@ class _Page2ScreenState extends State<Page2Screen> {
                 },
                 child: Text('add data'),
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserInformation()));
+                  },
+                  child: Text('see the visited place'))
             ],
           ),
         ),
