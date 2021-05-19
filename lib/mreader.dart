@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class UserInformation extends StatefulWidget {
   @override
@@ -10,6 +12,15 @@ class UserInformation extends StatefulWidget {
 class _UserInformationState extends State<UserInformation> {
   @override
   Widget build(BuildContext context) {
+    var alertStyle = AlertStyle(
+      descTextAlign: TextAlign.center,
+      descStyle: TextStyle(
+        fontSize: 16,
+      ),
+      titleStyle: TextStyle(fontSize: 25),
+      animationType: AnimationType.grow,
+      animationDuration: Duration(milliseconds: 400),
+    );
     Query users = FirebaseFirestore.instance
         .collection('USERS')
         .doc('${FirebaseAuth.instance.currentUser!.uid}')
@@ -21,18 +32,24 @@ class _UserInformationState extends State<UserInformation> {
       stream: users.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Scaffold(
-            body: Center(
-              child: SafeArea(
-                child: Text('something is wrong'),
-              ),
-            ),
-          );
+          Alert(
+                  context: context,
+                  closeFunction: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserInformation()));
+                  },
+                  title: "Error!",
+                  style: alertStyle,
+                  desc: "Failed to load data. Try again!")
+              .show();
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(
             body: SafeArea(
-              child: Text('LOADING'),
+              child: Center(
+                  child: SpinKitRing(color: Colors.blueAccent, size: 100)),
             ),
           );
         }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'qrGenerator.dart';
 import 'qrScanner.dart';
 
@@ -28,6 +28,15 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    var alertStyle = AlertStyle(
+      descTextAlign: TextAlign.center,
+      descStyle: TextStyle(
+        fontSize: 16,
+      ),
+      titleStyle: TextStyle(fontSize: 25),
+      animationType: AnimationType.grow,
+      animationDuration: Duration(milliseconds: 400),
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text(' Register page'),
@@ -42,7 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextField(
                     controller: nameController,
                     decoration: InputDecoration(
-                      hintText: 'enter your name here',
+                      hintText: 'Enter your name',
                       labelText: 'name',
                       border: OutlineInputBorder(),
                     ),
@@ -54,8 +63,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextField(
                     controller: pnoController,
                     decoration: InputDecoration(
-                      hintText: 'enter your phone no here',
-                      labelText: 'phone number',
+                      hintText: 'Enter your phone number',
+                      labelText: 'Phone number',
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.number,
@@ -66,8 +75,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextField(
                     controller: emailController,
                     decoration: InputDecoration(
-                      hintText: 'enter your email here',
-                      labelText: 'email',
+                      hintText: 'Enter your email',
+                      labelText: 'Email',
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.emailAddress,
@@ -78,8 +87,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextField(
                     controller: addresController,
                     decoration: InputDecoration(
-                      hintText: 'enter your addres here',
-                      labelText: 'addres',
+                      hintText: 'Enter your full address',
+                      labelText: 'Address',
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.streetAddress,
@@ -90,8 +99,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextField(
                     controller: passwordController,
                     decoration: InputDecoration(
-                      hintText: 'enter your password here',
-                      labelText: 'password',
+                      hintText: 'Enter your password',
+                      labelText: 'Password',
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.visiblePassword,
@@ -103,7 +112,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextField(
                     controller: repasswordController,
                     decoration: InputDecoration(
-                      hintText: 'enter your password here',
+                      hintText: 'Re-enter your password ',
                       labelText: 're-enter password',
                       border: OutlineInputBorder(),
                     ),
@@ -127,11 +136,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 ElevatedButton(
                   onPressed: () async {
                     if (passwordController.text != repasswordController.text) {
-                      setState(() {
-                        a = 'RE-nter the password';
-                        passwordController.text = '';
-                        repasswordController.text = '';
-                      });
+                      Alert(
+                        context: context,
+                        title: "Warning!",
+                        desc: "The password fields mismatch. Please try again",
+                        style: alertStyle,
+                      ).show();
                     } else {
                       try {
                         UserCredential userCredential = await FirebaseAuth
@@ -165,19 +175,49 @@ class _RegisterPageState extends State<RegisterPage> {
                         });
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
-                          setState(() {
-                            a = 'The password provided is too weak.';
-                          });
+                          Alert(
+                            context: context,
+                            title: "Weak password!",
+                            buttons: [],
+                            desc:
+                                "The password you entered is weak. Enter a password with atleast one number and one special character",
+                            closeFunction: () {
+                              setState(() {
+                                passwordController.text = "";
+                                repasswordController.text = "";
+                              });
+                              Navigator.pop(context);
+                            },
+                            style: alertStyle,
+                          ).show();
                         } else if (e.code == 'email-already-in-use') {
-                          setState(() {
-                            a = 'The account already exists for that email.';
-                          });
+                          Alert(
+                            context: context,
+                            title: "Email already used",
+                            desc:
+                                "Email is already registered. Please try logging in or use a different email id",
+                            buttons: [
+                              DialogButton(
+                                  child: Text("Log in"),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => LoginPage()));
+                                  })
+                            ],
+                            style: alertStyle,
+                          ).show();
                         }
                       } catch (e) {
-                        setState(() {
-                          a = e.toString();
-                        });
+                        Alert(
+                          context: context,
+                          title: "Warning!",
+                          desc: e.toString(),
+                          style: alertStyle,
+                        ).show();
                       }
+                      ;
                     }
                   },
                   child: Text('Register'),

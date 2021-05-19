@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'qrGenerator.dart';
 import 'qrScanner.dart';
+import 'register.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,6 +12,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //EDIT HERE FOR ALERT STYLE CHANGES
+
+  var alertStyle = AlertStyle(
+    descTextAlign: TextAlign.center,
+    descStyle: TextStyle(
+      fontSize: 16,
+    ),
+    titleStyle: TextStyle(fontSize: 25),
+    animationType: AnimationType.grow,
+    animationDuration: Duration(milliseconds: 400),
+  );
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -76,9 +88,51 @@ class _LoginPageState extends State<LoginPage> {
                     }
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
-                      print('No user found for that email.');
+                      Alert(
+                          style: alertStyle,
+                          context: context,
+                          title: "Error!",
+                          desc: "User Not registered. Please Register",
+                          buttons: [
+                            DialogButton(
+                                child: Text("Register"),
+                                onPressed: () {
+                                  Alert(
+                                      style: alertStyle,
+                                      context: context,
+                                      title:
+                                          "Register as customer or store owner?",
+                                      buttons: [
+                                        DialogButton(
+                                            child: Text(
+                                              "Customer",
+                                            ),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          RegisterPage(true)));
+                                            }),
+                                        DialogButton(
+                                            child: Text("Store Owner"),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          RegisterPage(false)));
+                                            })
+                                      ]).show();
+                                }),
+                          ]).show();
                     } else if (e.code == 'wrong-password') {
-                      print('Wrong password provided for that user.');
+                      Alert(
+                              style: alertStyle,
+                              context: context,
+                              title: "Error!",
+                              desc: "Wrong password! Try again...")
+                          .show();
                     }
                   }
                 },
