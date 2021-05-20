@@ -3,6 +3,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'screenscaling.dart';
 
 import 'main.dart';
 import 'mreader.dart';
@@ -41,6 +42,7 @@ class GeneratePageState extends State<GeneratePage> {
               child: Row(
                 children: [
                   ElevatedButton(
+                    style: x,
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -50,6 +52,7 @@ class GeneratePageState extends State<GeneratePage> {
                     child: Text('visited person data'),
                   ),
                   ElevatedButton(
+                      style: x,
                       onPressed: () {
                         Navigator.push(
                             context,

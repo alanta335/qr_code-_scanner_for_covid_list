@@ -5,6 +5,8 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'qrGenerator.dart';
 import 'qrScanner.dart';
 import 'register.dart';
+import 'drawer.dart';
+import 'screenscaling.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -64,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: 20,
               ),
               ElevatedButton(
+                style: x,
                 onPressed: () async {
                   try {
                     // ignore: unused_local_variable

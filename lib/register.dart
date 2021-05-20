@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'qrGenerator.dart';
 import 'qrScanner.dart';
+import 'screenscaling.dart';
 
 class RegisterPage extends StatefulWidget {
   final bool us;
@@ -134,6 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       )),
                 ),
                 ElevatedButton(
+                  style: x,
                   onPressed: () async {
                     if (passwordController.text != repasswordController.text) {
                       Alert(
@@ -198,6 +200,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 "Email is already registered. Please try logging in or use a different email id",
                             buttons: [
                               DialogButton(
+                                  color: Colors.deepPurple.shade400,
                                   child: Text("Log in"),
                                   onPressed: () {
                                     Navigator.push(

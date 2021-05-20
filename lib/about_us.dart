@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr2/drawer.dart';
+import 'screenscaling.dart';
 
 class AboutUs extends StatefulWidget {
   @override
@@ -9,26 +11,24 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xAFE265D8),
+      drawer: new CmnDrawer(),
+      backgroundColor: Color(0x9ED154C7),
       appBar: AppBar(
         title: Center(
           child: Text(
-            "MY PORT-FOLIO",
+            "About Us",
             style: TextStyle(
               color: Colors.white70,
             ),
           ),
         ),
-        backgroundColor: Color(0xFF501474),
+        backgroundColor: Color(0xFF612585),
       ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              height: 40,
-            ),
             Row(
               children: [
                 SizedBox(
@@ -60,7 +60,7 @@ class _AboutUsState extends State<AboutUs> {
                     style: TextStyle(
                       fontFamily: 'Caveat',
                       color: Colors.black,
-                      fontSize: 30,
+                      fontSize: 27,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -72,12 +72,12 @@ class _AboutUsState extends State<AboutUs> {
                   padding: EdgeInsets.only(top: 20),
                   height: 60,
                   child: Text(
-                    'Akhil Krishna',
+                    'Akhil Krishna S',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'Caveat',
                       color: Colors.black,
-                      fontSize: 30,
+                      fontSize: 27,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -88,7 +88,7 @@ class _AboutUsState extends State<AboutUs> {
               height: 5,
             ),
             Text(
-              'FLUTTER APP DEVELOPER',
+              'FLUTTER APP DEVELOPERS',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black54,
@@ -104,57 +104,12 @@ class _AboutUsState extends State<AboutUs> {
               thickness: 2,
               color: Colors.grey,
             ),
-            Card(
-              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              color: Colors.grey.shade400,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.grey.shade300),
-                ),
-                onPressed: () {},
-                child: ListTile(
-                  enableFeedback: true,
-                  horizontalTitleGap: 40,
-                  leading: Icon(
-                    Icons.call_outlined,
-                    size: 50,
-                    color: Colors.grey.shade800,
-                  ),
-                  title: Text(
-                    '+91 8289463489',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.grey.shade800,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.grey.shade300),
-                ),
-                onPressed: () {},
-                child: ListTile(
-                  enableFeedback: true,
-                  horizontalTitleGap: 40,
-                  leading: Icon(
-                    Icons.email_rounded,
-                    size: 50,
-                    color: Colors.grey.shade800,
-                  ),
-                  title: Text(
-                    'alanta@gmail.com',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.grey.shade800,
-                    ),
-                  ),
-                ),
+            Text(
+              "We are students of NSS College of engineering. This Project was made as a part of Build From Home event hosted by Tinkerhub",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white54,
+                fontSize: 14,
               ),
             ),
           ],

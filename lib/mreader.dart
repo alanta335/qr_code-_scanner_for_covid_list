@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'about_us.dart';
 import 'main.dart';
+import 'userprofile.dart';
 
 class UserInformation extends StatefulWidget {
   @override
@@ -15,6 +16,7 @@ class UserInformation extends StatefulWidget {
 class _UserInformationState extends State<UserInformation> {
   @override
   Widget build(BuildContext context) {
+    //var c;
     var alertStyle = AlertStyle(
       descTextAlign: TextAlign.center,
       descStyle: TextStyle(
@@ -102,12 +104,22 @@ class _UserInformationState extends State<UserInformation> {
                       shadowColor: Color(0xFF501474),
                       color: Colors.transparent,
                       child: ListTile(
-                        title: Text('About Us'),
-                        onTap: () {
+                        title: Text('My Profile'),
+                        onTap: () async {
+                          DocumentSnapshot user = await FirebaseFirestore
+                              .instance
+                              .collection('USERS')
+                              .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                              .get();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AboutUs()));
+                                  builder: (context) => UserProfile(
+                                        name: user['name'],
+                                        email: user['email'],
+                                        pno: user['pno'],
+                                        addres: user['addres'],
+                                      )));
                         },
                       ),
                     ),
@@ -147,9 +159,12 @@ class _UserInformationState extends State<UserInformation> {
                       shadowColor: Color(0xFF501474),
                       color: Colors.transparent,
                       child: ListTile(
-                        title: Text('About App'),
+                        title: Text('About Developers'),
                         onTap: () {
-                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AboutUs()));
                         },
                       ),
                     ),
