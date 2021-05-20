@@ -1,9 +1,12 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:qr2/screenscaling.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'main.dart';
 import 'page2.dart';
+import 'drawer.dart';
 
 class QRViewExample extends StatefulWidget {
   @override
@@ -32,7 +35,7 @@ class _QRViewExampleState extends State<QRViewExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('qr page'),
+        title: Text('Scan the QR Code'),
       ),
       body: Column(
         children: <Widget>[
@@ -56,6 +59,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                       Container(
                         margin: EdgeInsets.all(8),
                         child: ElevatedButton(
+                          style: x,
                           onPressed: () async {
                             await controller?.flipCamera();
                             setState(() {});
@@ -83,12 +87,22 @@ class _QRViewExampleState extends State<QRViewExample> {
                         Container(
                           margin: EdgeInsets.all(8),
                           child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          Page2Screen(data: r)));
+                            style: x,
+                            onPressed: () async {
+                              DocumentSnapshot store = await FirebaseFirestore
+                                  .instance
+                                  .collection('USERS')
+                                  .doc('$r')
+                                  .get();
+                              if (r != null) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Page2Screen(
+                                              data: r,
+                                              data2: store,
+                                            )));
+                              }
                             },
                             child: Text('next page',
                                 style: TextStyle(fontSize: 20)),
@@ -96,6 +110,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                         ),
                         Container(
                           child: ElevatedButton(
+                              style: x,
                               onPressed: () {
                                 Navigator.push(
                                     context,
