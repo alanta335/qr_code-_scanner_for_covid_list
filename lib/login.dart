@@ -5,7 +5,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'qrGenerator.dart';
 import 'qrScanner.dart';
 import 'register.dart';
-import 'drawer.dart';
+
 import 'screenscaling.dart';
 
 class LoginPage extends StatefulWidget {
@@ -32,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(' LOGIN PAGE'),
+        backgroundColor: Colors.deepPurple.shade400,
       ),
       body: Center(
         child: Expanded(

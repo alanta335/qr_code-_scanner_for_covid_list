@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'drawer.dart';
 import 'screenscaling.dart';
 
@@ -25,10 +25,9 @@ class UserProfile extends StatelessWidget {
           "PROFILE",
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.blue[800],
+            color: Color(0xffffffff),
           ),
         ),
-        backgroundColor: Colors.lightBlue[200],
       ),
       body: SafeArea(
         child: Column(

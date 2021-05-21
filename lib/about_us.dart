@@ -12,17 +12,15 @@ class _AboutUsState extends State<AboutUs> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: new CmnDrawer(),
-      backgroundColor: Color(0x9ED154C7),
+      backgroundColor: Color(0x9FFA59F2),
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            "About Us",
-            style: TextStyle(
-              color: Colors.white70,
-            ),
+        title: Text(
+          "About Us",
+          style: TextStyle(
+            color: Colors.white70,
           ),
         ),
-        backgroundColor: Color(0xFF612585),
+        backgroundColor: Colors.deepPurple.shade400,
       ),
       body: SafeArea(
         child: Column(
