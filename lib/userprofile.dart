@@ -8,12 +8,14 @@ class UserProfile extends StatelessWidget {
   final email;
   final pno;
   final addres;
+  final vstatus;
 
   UserProfile({
     @required this.name,
     @required this.email,
     @required this.pno,
     @required this.addres,
+    @required this.vstatus,
   });
   @override
   Widget build(BuildContext context) {
@@ -66,38 +68,46 @@ class UserProfile extends StatelessWidget {
               color: Colors.grey,
             ),
             Container(
-                child: Column(
-              children: [
-                Text(
-                  'Name: $name',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey.shade800,
+              child: Column(
+                children: [
+                  Text(
+                    'Name: $name',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey.shade800,
+                    ),
                   ),
-                ),
-                Text(
-                  'Address: $addres',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey.shade800,
+                  Text(
+                    'Address: $addres',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey.shade800,
+                    ),
                   ),
-                ),
-                Text(
-                  'Phone NO: $pno',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey.shade800,
+                  Text(
+                    'Phone NO: $pno',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey.shade800,
+                    ),
                   ),
-                ),
-                Text(
-                  'Email: $email',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey.shade800,
+                  Text(
+                    'Email: $email',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey.shade800,
+                    ),
                   ),
-                ),
-              ],
-            )),
+                  Text(
+                    'Vaccination status: $vstatus',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey.shade800,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

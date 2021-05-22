@@ -76,6 +76,7 @@ class _Page2ScreenState extends State<Page2Screen> {
                   'phno': store['pno'],
                   'visitedId': store['userId'],
                   'time': DateTime.now().toString(),
+                  'vaccination_status': store['vaccination_status'],
                 });
                 print(store['name']);
                 print(user['name']);
@@ -90,6 +91,7 @@ class _Page2ScreenState extends State<Page2Screen> {
                   'phno': user['pno'],
                   'visitedId': user['userId'],
                   'time': DateTime.now().toString(),
+                  'vaccination_status': user['vaccination_status'],
                 });
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => UserInformation()));

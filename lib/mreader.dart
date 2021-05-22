@@ -73,7 +73,8 @@ class _UserInformationState extends State<UserInformation> {
                   title: Text('${document.get('name')}'),
                   subtitle: Text(
                       'Address : ${document.get('address')}\nVisited on ${document.get('time')}'),
-                  trailing: Text('Phone Number:${document.get('phno')}'),
+                  trailing: Text(
+                      'Phone Number:${document.get('phno')}\nVaccination status: ${document.get('vaccination_status')}'),
                   isThreeLine: true,
                 ),
               );

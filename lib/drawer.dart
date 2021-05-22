@@ -2,8 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:qr2/mreader.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:qr2/vstatus.dart';
 
 import 'help.dart';
 import 'screenscaling.dart';
@@ -74,6 +73,7 @@ class CmnDrawer extends StatelessWidget {
                                   email: user['email'],
                                   pno: user['pno'],
                                   addres: user['addres'],
+                                  vstatus: user['vaccination_status'],
                                 )));
                   },
                 ),
@@ -125,6 +125,26 @@ class CmnDrawer extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => AboutUs()));
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Card(
+                margin: EdgeInsets.only(right: 10),
+                shadowColor: Color(0xFF501474),
+                color: Colors.transparent,
+                child: ListTile(
+                  title: Text('Change Vaccination status',
+                      style: TextStyle(color: Color(0xFFFFFFFF))),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VaccinationStatus(),
+                      ),
+                    );
                   },
                 ),
               ),

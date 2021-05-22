@@ -6,6 +6,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'qrGenerator.dart';
 import 'qrScanner.dart';
 import 'screenscaling.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 
 class RegisterPage extends StatefulWidget {
   final bool us;
@@ -19,14 +20,13 @@ class _RegisterPageState extends State<RegisterPage> {
   _RegisterPageState({required this.us});
   var a = 'ENTER THE DETAILS';
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  bool v = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController pnoController = TextEditingController();
   TextEditingController addresController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repasswordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     var alertStyle = AlertStyle(
@@ -38,6 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
       animationType: AnimationType.grow,
       animationDuration: Duration(milliseconds: 400),
     );
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Register your account'),
@@ -93,6 +94,16 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   keyboardType: TextInputType.streetAddress,
                 ),
+              ),
+              CheckboxListTile(
+                title: const Text('vaccinated'),
+                value: timeDilation != 1.0,
+                onChanged: (bool? value) {
+                  setState(() {
+                    timeDilation = value! ? 5.0 : 1.0;
+                    v = value;
+                  });
+                },
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -173,6 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         'timestamp': DateTime.now().toString(),
                         'userId': FirebaseAuth.instance.currentUser!.uid,
                         'user_type': us,
+                        'vaccination_status': v,
                       });
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
@@ -219,13 +231,50 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: alertStyle,
                       ).show();
                     }
-                    ;
                   }
                 },
                 child: Text('Register'),
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class LabeledCheckbox extends StatelessWidget {
+  const LabeledCheckbox({
+    Key? key,
+    required this.label,
+    required this.padding,
+    required this.value,
+    required this.onChanged,
+  }) : super(key: key);
+
+  final String label;
+  final EdgeInsets padding;
+  final bool value;
+  final Function onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        onChanged(!value);
+      },
+      child: Padding(
+        padding: padding,
+        child: Row(
+          children: <Widget>[
+            Expanded(child: Text(label)),
+            Checkbox(
+              value: value,
+              onChanged: (bool? newValue) {
+                onChanged(newValue);
+              },
+            ),
+          ],
         ),
       ),
     );
