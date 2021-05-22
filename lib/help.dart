@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'drawer.dart';
+import 'screenscaling.dart';
+import 'screenscaling.dart';
+
 class Help extends StatefulWidget {
   @override
   _HelpState createState() => _HelpState();
@@ -14,14 +18,14 @@ class _HelpState extends State<Help> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CmnDrawer(),
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            "Help Details",
-            style: TextStyle(
-              color: Color(0xFFFFFFFF),
-            ),
+        title: Text(
+          "Customer Support",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFFFFFFFF),
           ),
         ),
       ),
@@ -31,30 +35,42 @@ class _HelpState extends State<Help> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CircleAvatar(
-              backgroundColor: Colors.black38,
+              backgroundColor: Colors.deepPurple[400],
               backgroundImage: AssetImage('images/profile2.png'),
               radius: 100,
             ),
             SizedBox(
               height: 40,
             ),
-            Card(
-              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              color: Colors.grey.shade400,
-              child: ListTile(
-                enableFeedback: true,
-                horizontalTitleGap: 40,
-                leading: Icon(
-                  Icons.notifications_none,
-                  size: 50,
-                  color: Colors.grey.shade800,
-                ),
-                title: Text(
-                  'IF there is any error or any issues about the app countact the developers we are available 24/7.Contacting us through mail is most prefered',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey.shade800,
+            Container(
+              height: SizeConfig.blockSizeVertical! * 14,
+              //width: SizeConfig.blockSizeVertical! * 4,
+              child: Card(
+                shape: CircleBorder(),
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                color: Colors.grey.shade400,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.deepPurple.shade400),
                   ),
+                  child: Row(children: <Widget>[
+                    Icon(
+                      Icons.notifications_none,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "test",
+                      textAlign: TextAlign.justify,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey.shade800,
+                      ),
+                    ),
+                  ]),
                 ),
               ),
             ),
@@ -73,13 +89,13 @@ class _HelpState extends State<Help> {
                   leading: Icon(
                     Icons.call_outlined,
                     size: 50,
-                    color: Colors.grey.shade800,
+                    color: Colors.white,
                   ),
                   title: Text(
                     '+91 1234567890',
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.grey.shade800,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -99,13 +115,13 @@ class _HelpState extends State<Help> {
                   leading: Icon(
                     Icons.email_rounded,
                     size: 50,
-                    color: Colors.grey.shade800,
+                    color: Colors.white,
                   ),
                   title: Text(
                     'coviqrr@gmail.com',
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.grey.shade800,
+                      color: Colors.white,
                     ),
                   ),
                 ),

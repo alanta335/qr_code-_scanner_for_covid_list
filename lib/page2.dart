@@ -27,80 +27,76 @@ class _Page2ScreenState extends State<Page2Screen> {
         title: Text('Store Details'),
       ),
       body: SafeArea(
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(
-                  'Store Name: ${x1!['name']}',
-                  style: TextStyle(fontSize: 25),
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                'Store Name: ${x1!['name']}',
+                style: TextStyle(fontSize: 25),
               ),
-              Center(
-                child: Text(
-                  "Phone Number: ${x1!['pno']}",
-                  style: TextStyle(fontSize: 25),
-                ),
+            ),
+            Center(
+              child: Text(
+                "Phone Number: ${x1!['pno']}",
+                style: TextStyle(fontSize: 25),
               ),
-              Center(
-                child: Text(
-                  "Email ID: ${x1!['email']}",
-                  style: TextStyle(fontSize: 25),
-                ),
+            ),
+            Center(
+              child: Text(
+                "Email ID: ${x1!['email']}",
+                style: TextStyle(fontSize: 25),
               ),
-              Center(
-                child: Text(
-                  "Location: ${x1!['addres']}",
-                  style: TextStyle(fontSize: 20),
-                ),
+            ),
+            Center(
+              child: Text(
+                "Location: ${x1!['addres']}",
+                style: TextStyle(fontSize: 20),
               ),
-              ElevatedButton(
-                style: x,
-                onPressed: () async {
-                  DocumentSnapshot user = await FirebaseFirestore.instance
-                      .collection('USERS')
-                      .doc('${FirebaseAuth.instance.currentUser!.uid}')
-                      .get();
-                  DocumentSnapshot store = await FirebaseFirestore.instance
-                      .collection('USERS')
-                      .doc('$storeid')
-                      .get();
-                  FirebaseFirestore.instance
-                      .collection('USERS')
-                      .doc('${FirebaseAuth.instance.currentUser!.uid}')
-                      .collection('visited')
-                      .doc()
-                      .set({
-                    'name': store['name'],
-                    'address': store['addres'],
-                    'phno': store['pno'],
-                    'visitedId': store['userId'],
-                    'time': DateTime.now().toString(),
-                  });
-                  print(store['name']);
-                  print(user['name']);
-                  FirebaseFirestore.instance
-                      .collection('USERS')
-                      .doc('$storeid')
-                      .collection('visited')
-                      .doc()
-                      .set({
-                    'name': user['name'],
-                    'address': user['addres'],
-                    'phno': user['pno'],
-                    'visitedId': user['userId'],
-                    'time': DateTime.now().toString(),
-                  });
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UserInformation()));
-                },
-                child: Text('Add Data'),
-              ),
-            ],
-          ),
+            ),
+            ElevatedButton(
+              style: x,
+              onPressed: () async {
+                DocumentSnapshot user = await FirebaseFirestore.instance
+                    .collection('USERS')
+                    .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                    .get();
+                DocumentSnapshot store = await FirebaseFirestore.instance
+                    .collection('USERS')
+                    .doc('$storeid')
+                    .get();
+                FirebaseFirestore.instance
+                    .collection('USERS')
+                    .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                    .collection('visited')
+                    .doc()
+                    .set({
+                  'name': store['name'],
+                  'address': store['addres'],
+                  'phno': store['pno'],
+                  'visitedId': store['userId'],
+                  'time': DateTime.now().toString(),
+                });
+                print(store['name']);
+                print(user['name']);
+                FirebaseFirestore.instance
+                    .collection('USERS')
+                    .doc('$storeid')
+                    .collection('visited')
+                    .doc()
+                    .set({
+                  'name': user['name'],
+                  'address': user['addres'],
+                  'phno': user['pno'],
+                  'visitedId': user['userId'],
+                  'time': DateTime.now().toString(),
+                });
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserInformation()));
+              },
+              child: Text('Add Data'),
+            ),
+          ],
         ),
       ),
     );

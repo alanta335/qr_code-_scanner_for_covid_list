@@ -24,7 +24,12 @@ class ChoosingPage extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('CoViQRr'),
+        title: Center(
+          child: Text(
+            'CoViQRr',
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
       body: Center(
         child: Column(

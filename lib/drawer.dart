@@ -55,7 +55,7 @@ class CmnDrawer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Card(
-                margin: EdgeInsets.only(right: 120),
+                margin: EdgeInsets.only(right: 10),
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
@@ -82,7 +82,7 @@ class CmnDrawer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Card(
-                margin: EdgeInsets.only(right: 120),
+                margin: EdgeInsets.only(right: 10),
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
@@ -100,7 +100,7 @@ class CmnDrawer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Card(
-                margin: EdgeInsets.only(right: 120),
+                margin: EdgeInsets.only(right: 10),
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
@@ -116,7 +116,7 @@ class CmnDrawer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Card(
-                margin: EdgeInsets.only(right: 120),
+                margin: EdgeInsets.only(right: 10),
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
@@ -132,7 +132,7 @@ class CmnDrawer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Card(
-                margin: EdgeInsets.only(right: 120),
+                margin: EdgeInsets.only(right: 10),
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(

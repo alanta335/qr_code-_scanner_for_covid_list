@@ -3,10 +3,8 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'drawer.dart';
 import 'screenscaling.dart';
-
-import 'main.dart';
-import 'mreader.dart';
 
 class GeneratePage extends StatefulWidget {
   @override
@@ -20,6 +18,7 @@ class GeneratePageState extends State<GeneratePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CmnDrawer(),
       appBar: AppBar(
         title: Text('QR Code Generator'),
         actions: <Widget>[],
@@ -35,34 +34,9 @@ class GeneratePageState extends State<GeneratePage> {
               data: qrData,
             ),
             Text(
-              "id is $qrData",
+              "Show this QR to the customer",
               style: TextStyle(fontSize: 20.0),
             ),
-            Center(
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    style: x,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => UserInformation()));
-                    },
-                    child: Text('visited person data'),
-                  ),
-                  ElevatedButton(
-                      style: x,
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ChoosingPage()));
-                      },
-                      child: Text('LOG OUT')),
-                ],
-              ),
-            )
           ],
         ),
       ),

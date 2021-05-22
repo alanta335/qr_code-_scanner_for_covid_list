@@ -31,119 +31,117 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(' LOGIN PAGE'),
+        title: Text('Log in to your account'),
         backgroundColor: Colors.deepPurple.shade400,
       ),
       body: Center(
-        child: Expanded(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    hintText: 'enter your email here',
-                    labelText: 'email',
-                    border: OutlineInputBorder(),
-                  ),
-                  keyboardType: TextInputType.emailAddress,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  hintText: 'enter your email here',
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
                 ),
+                keyboardType: TextInputType.emailAddress,
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    hintText: 'enter your password here',
-                    labelText: 'password',
-                    border: OutlineInputBorder(),
-                  ),
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                controller: passwordController,
+                decoration: InputDecoration(
+                  hintText: 'enter your password here',
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
                 ),
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
               ),
-              SizedBox(
-                width: 20,
-              ),
-              ElevatedButton(
-                style: x,
-                onPressed: () async {
-                  try {
-                    // ignore: unused_local_variable
-                    UserCredential userCredential = await FirebaseAuth.instance
-                        .signInWithEmailAndPassword(
-                            email: emailController.text,
-                            password: passwordController.text);
-                    DocumentSnapshot user = await FirebaseFirestore.instance
-                        .collection('USERS')
-                        .doc('${FirebaseAuth.instance.currentUser!.uid}')
-                        .get();
-                    if (user['user_type'] == true) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => QRViewExample()));
-                    } else {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GeneratePage()));
-                    }
-                  } on FirebaseAuthException catch (e) {
-                    if (e.code == 'user-not-found') {
-                      Alert(
-                          style: alertStyle,
-                          context: context,
-                          title: "Error!",
-                          desc: "User Not registered. Please Register",
-                          buttons: [
-                            DialogButton(
-                                child: Text("Register"),
-                                onPressed: () {
-                                  Alert(
-                                      style: alertStyle,
-                                      context: context,
-                                      title:
-                                          "Register as customer or store owner?",
-                                      buttons: [
-                                        DialogButton(
-                                            child: Text(
-                                              "Customer",
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          RegisterPage(true)));
-                                            }),
-                                        DialogButton(
-                                            child: Text("Store Owner"),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          RegisterPage(false)));
-                                            })
-                                      ]).show();
-                                }),
-                          ]).show();
-                    } else if (e.code == 'wrong-password') {
-                      Alert(
-                              style: alertStyle,
-                              context: context,
-                              title: "Error!",
-                              desc: "Wrong password! Try again...")
-                          .show();
-                    }
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            ElevatedButton(
+              style: x,
+              onPressed: () async {
+                try {
+                  // ignore: unused_local_variable
+                  UserCredential userCredential = await FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passwordController.text);
+                  DocumentSnapshot user = await FirebaseFirestore.instance
+                      .collection('USERS')
+                      .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                      .get();
+                  if (user['user_type'] == true) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QRViewExample()));
+                  } else {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GeneratePage()));
                   }
-                },
-                child: Text('LOGIN'),
-              )
-            ],
-          ),
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'user-not-found') {
+                    Alert(
+                        style: alertStyle,
+                        context: context,
+                        title: "Error!",
+                        desc: "User Not registered. Please Register",
+                        buttons: [
+                          DialogButton(
+                              child: Text("Register"),
+                              onPressed: () {
+                                Alert(
+                                    style: alertStyle,
+                                    context: context,
+                                    title:
+                                        "Register as customer or store owner?",
+                                    buttons: [
+                                      DialogButton(
+                                          child: Text(
+                                            "Customer",
+                                          ),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        RegisterPage(true)));
+                                          }),
+                                      DialogButton(
+                                          child: Text("Store Owner"),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        RegisterPage(false)));
+                                          })
+                                    ]).show();
+                              }),
+                        ]).show();
+                  } else if (e.code == 'wrong-password') {
+                    Alert(
+                            style: alertStyle,
+                            context: context,
+                            title: "Error!",
+                            desc: "Wrong password! Try again...")
+                        .show();
+                  }
+                }
+              },
+              child: Text('Log in'),
+            )
+          ],
         ),
       ),
     );

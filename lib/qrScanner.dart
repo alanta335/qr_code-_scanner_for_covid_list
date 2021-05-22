@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr2/screenscaling.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'drawer.dart';
 import 'main.dart';
 import 'page2.dart';
 import 'drawer.dart';
@@ -34,6 +35,7 @@ class _QRViewExampleState extends State<QRViewExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CmnDrawer(),
       appBar: AppBar(
         title: Text('Scan the QR Code'),
       ),
