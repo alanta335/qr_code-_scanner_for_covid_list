@@ -5,6 +5,7 @@ import 'package:qr2/mreader.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import 'help.dart';
 import 'screenscaling.dart';
 import 'about_us.dart';
 import 'main.dart';
@@ -106,7 +107,8 @@ class CmnDrawer extends StatelessWidget {
                   title:
                       Text('Help', style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Help()));
                   },
                 ),
               ),

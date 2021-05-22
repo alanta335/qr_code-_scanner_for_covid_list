@@ -40,7 +40,7 @@ class UserProfile extends StatelessWidget {
             CircleAvatar(
               backgroundColor: Colors.black38,
               backgroundImage: AssetImage('images/profile1.png'),
-              radius: 80,
+              radius: 110,
             ),
             Container(
               padding: EdgeInsets.only(top: 20),
