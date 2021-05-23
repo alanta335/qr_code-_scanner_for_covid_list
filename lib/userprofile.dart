@@ -24,7 +24,7 @@ class UserProfile extends StatelessWidget {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(
-          "PROFILE",
+          "My Details",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Color(0xffffffff),
@@ -36,13 +36,12 @@ class UserProfile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              height: 40,
-            ),
             CircleAvatar(
               backgroundColor: Colors.black38,
-              backgroundImage: AssetImage('images/profile1.png'),
-              radius: 110,
+              backgroundImage: AssetImage(
+                'images/profile1.png',
+              ),
+              radius: 120,
             ),
             Container(
               padding: EdgeInsets.only(top: 20),
@@ -53,7 +52,7 @@ class UserProfile extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: 'Caveat',
                   color: Colors.black,
-                  fontSize: 40,
+                  fontSize: 35,
                   fontWeight: FontWeight.bold,
                 ),
               ),

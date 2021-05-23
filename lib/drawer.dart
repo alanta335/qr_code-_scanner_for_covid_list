@@ -158,11 +158,12 @@ class CmnDrawer extends StatelessWidget {
                 child: ListTile(
                   title: Text('Log out',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () {
-                    Navigator.push(
+                  onTap: () async {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => ChoosingPage()));
+                        MaterialPageRoute(builder: (context) => ChoosingPage()),
+                        (route) => false);
                   },
                 ),
               ),

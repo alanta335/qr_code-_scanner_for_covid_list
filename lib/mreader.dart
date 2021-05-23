@@ -52,7 +52,8 @@ class _UserInformationState extends State<UserInformation> {
           return Scaffold(
             body: SafeArea(
               child: Center(
-                  child: SpinKitRing(color: Colors.blueAccent, size: 100)),
+                  child: SpinKitRing(
+                      color: Colors.deepPurple.shade400, size: 100)),
             ),
           );
         }
@@ -60,7 +61,7 @@ class _UserInformationState extends State<UserInformation> {
         return Scaffold(
           drawer: new CmnDrawer(),
           appBar: AppBar(
-            title: Text('Visited DATABASE'),
+            title: Text('Visited Database'),
           ),
           body: ListView(
             addAutomaticKeepAlives: false,

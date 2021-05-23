@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'qrGenerator.dart';
 import 'qrScanner.dart';
@@ -42,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
               child: TextField(
                 controller: emailController,
                 decoration: InputDecoration(
-                  hintText: 'enter your email here',
+                  hintText: 'Enter your email ID',
                   labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
@@ -54,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
               child: TextField(
                 controller: passwordController,
                 decoration: InputDecoration(
-                  hintText: 'enter your password here',
+                  hintText: 'Enter your password',
                   labelText: 'Password',
                   border: OutlineInputBorder(),
                 ),
@@ -68,6 +69,15 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               style: x,
               onPressed: () async {
+                Alert(
+                  context: context,
+                  buttons: [],
+                  title: "Logging in....",
+                  content: SpinKitRing(
+                    color: Colors.deepPurple.shade400,
+                    duration: Duration(milliseconds: 1000),
+                  ),
+                ).show();
                 try {
                   // ignore: unused_local_variable
                   UserCredential userCredential = await FirebaseAuth.instance

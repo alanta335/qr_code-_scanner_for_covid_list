@@ -3,7 +3,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'drawer.dart';
 import 'screenscaling.dart';
-import 'screenscaling.dart';
 
 class Help extends StatefulWidget {
   @override
@@ -62,11 +61,11 @@ class _HelpState extends State<Help> {
                       color: Colors.white,
                     ),
                     Text(
-                      "test",
+                      "For any issues, contact the developer",
                       textAlign: TextAlign.justify,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                         color: Colors.grey.shade800,
                       ),
                     ),

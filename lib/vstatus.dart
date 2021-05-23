@@ -24,7 +24,7 @@ class _VaccinationStatusState extends State<VaccinationStatus> {
             value: timeDilation != 1.0,
             onChanged: (bool? value) {
               setState(() {
-                timeDilation = value! ? 2.0 : 1.0;
+                timeDilation = value! ? 0.05 : 1.0;
                 v = value;
               });
             },

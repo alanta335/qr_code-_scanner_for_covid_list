@@ -7,7 +7,6 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'drawer.dart';
 import 'main.dart';
 import 'page2.dart';
-import 'drawer.dart';
 
 class QRViewExample extends StatefulWidget {
   @override
@@ -52,7 +51,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                   if (result != null)
                     Center(
                       child: Text(
-                        'Data has been successfully read',
+                        'Data read successful',
                         style: TextStyle(
                           fontSize: 20,
                           fontStyle: FontStyle.italic,
@@ -63,7 +62,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                   else
                     Center(
                       child: Text(
-                        'Scan a qr code',
+                        'Scan a QR code',
                         style: TextStyle(
                           fontSize: 20,
                           fontStyle: FontStyle.italic,
@@ -87,10 +86,9 @@ class _QRViewExampleState extends State<QRViewExample> {
                             future: controller?.getCameraInfo(),
                             builder: (context, snapshot) {
                               if (snapshot.data != null) {
-                                return Text(
-                                    'Camera facing ${describeEnum(snapshot.data!)}');
+                                return Text('Flip Camera');
                               } else {
-                                return Text('loading');
+                                return Text('Loading');
                               }
                             },
                           ),
@@ -123,20 +121,9 @@ class _QRViewExampleState extends State<QRViewExample> {
                                             )));
                               }
                             },
-                            child: Text('next page',
+                            child: Text('Add Data',
                                 style: TextStyle(fontSize: 20)),
                           ),
-                        ),
-                        Container(
-                          child: ElevatedButton(
-                              style: x,
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ChoosingPage()));
-                              },
-                              child: Text('LOG OUT')),
                         ),
                       ],
                     ),

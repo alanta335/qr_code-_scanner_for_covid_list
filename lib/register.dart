@@ -100,7 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 value: timeDilation != 1.0,
                 onChanged: (bool? value) {
                   setState(() {
-                    timeDilation = value! ? 5.0 : 1.0;
+                    timeDilation = value! ? 0.1 : 1.0;
                     v = value;
                   });
                 },
@@ -237,44 +237,6 @@ class _RegisterPageState extends State<RegisterPage> {
               )
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class LabeledCheckbox extends StatelessWidget {
-  const LabeledCheckbox({
-    Key? key,
-    required this.label,
-    required this.padding,
-    required this.value,
-    required this.onChanged,
-  }) : super(key: key);
-
-  final String label;
-  final EdgeInsets padding;
-  final bool value;
-  final Function onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        onChanged(!value);
-      },
-      child: Padding(
-        padding: padding,
-        child: Row(
-          children: <Widget>[
-            Expanded(child: Text(label)),
-            Checkbox(
-              value: value,
-              onChanged: (bool? newValue) {
-                onChanged(newValue);
-              },
-            ),
-          ],
         ),
       ),
     );
