@@ -22,10 +22,10 @@ BFH/recdRQxvgOGx8Toyv/2021
 
 ## Table of Contents
 
-- [How it Works](#How it Works)
+- [How it Works](#How-it-Works)
 - [Libraries used](#Libraries-used)
-- [How to configure ?](#How-to-configure)
-- [How to Run ?](#How-to-Run)
+- [How to configure](#How-to-configure)
+- [How to Run](#How-to-Run)
 
 
 ## How it Works
