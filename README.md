@@ -20,33 +20,32 @@ BFH/recdRQxvgOGx8Toyv/2021
 
 [Release APK](https://github.com/alanta335/qr_code-_scanner_for_covid_list/raw/main/app-release.apk)
 ## How it Works ?
-1. \
+1. Home Page \
    ![Image](image/1.jpeg)
-2. \
+2. Register account\
    ![Image](image/2.jpeg)
-3. \
-   ![Image](image/3.jpeg) \
-4.1 \
-    ![Image](image/4.jpeg) \
-4.2 \
-    ![Image](image/4.2.jpeg) \
-5. \
-    ![Image](image/5.jpeg) \
-6. \
+3. Log in Page\
+   ![Image](image/3.jpeg) 
+4. 1. Scanning page for Customer\
+    ![Image](image/4.jpeg) 
+   2. QR generation page for Store Owner\
+    ![Image](image/4.2.jpeg) 
+5. Scanning QR code\
+    ![Image](image/5.jpeg) 
+6. Add data page for customer\
     ![Image](image/6.jpeg) 
-7. \
+7. Visited Database\
     ![Image](image/7.jpeg) 
     
-8. \
+8. Common App Drawer\
     ![Image](image/8.jpeg) 
-9. \
+9. Profile details\
     ![Image](image/9.jpeg) 
-10. \
+10. Help page\
     ![Image](image/10.jpeg) 
-11. \
+11. Vaccination status updation page\
     ![Image](image/11.jpeg) 
-12. \
-
+12. About Developers\
     ![Image](image/12.jpeg) 
     
 
