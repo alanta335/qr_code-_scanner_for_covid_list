@@ -25,7 +25,9 @@ BFH/recdRQxvgOGx8Toyv/2021
 ## Libraries used
 
 Environment:
-```sdk: ">=2.12.0 <3.0.0"
+
+```
+Environment-sdk: ">=2.12.0 <3.0.0"
 minSdkVersion: 21
 qr_flutter: 4.0.0
 qr_code_scanner: 0.4.0
@@ -43,7 +45,7 @@ Instructions for setting up project
 2. Setup [Android SDK](https://developer.android.com/studio)
 3. Clone the repository
 4. Run the below command in the cloned directory.\
-   ```flutter pub get```\
+   ```flutter pub get```
 5. Create a firebase project with name ```com.example.qr2``` (Default,Can be changed with some editing in AndroidManifest.xml) and download the JSON file    from Firebase
 put the firebase json file in the android\app\
 In the firebase enable firebase authentication (email and password).
