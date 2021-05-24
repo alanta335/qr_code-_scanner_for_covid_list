@@ -16,9 +16,10 @@ BFH/recdRQxvgOGx8Toyv/2021
 
 ## Link to product walkthrough
 
-[Video walkthrough](https://www.loom.com/share/56504be922274405a47afde25a27e1f3)
+![Loon video](image/loom.png) [Video walkthrough](https://www.loom.com/share/56504be922274405a47afde25a27e1f3)
+## Download APK
 
-[Release APK](https://github.com/alanta335/qr_code-_scanner_for_covid_list/raw/main/app-release.apk)
+![Download](image/download.png) [Release APK](https://github.com/alanta335/qr_code-_scanner_for_covid_list/raw/main/app-release.apk)
 
 ## Table of Contents
 
