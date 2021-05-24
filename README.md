@@ -33,19 +33,19 @@ BFH/recdRQxvgOGx8Toyv/2021
 5. \
     ![Image](image/5.jpeg) \
 6. \
-    ![Image](image/6.jpeg) \
+    ![Image](image/6.jpeg) 
 7. \
-    ![Image](image/7.jpeg) \ 
+    ![Image](image/7.jpeg) 
 8. \
-    ![Image](image/8.jpeg) \
+    ![Image](image/8.jpeg) 
 9. \
-    ![Image](image/9.jpeg) \
+    ![Image](image/9.jpeg) 
 10. \
-    ![Image](image/10.jpeg) \
+    ![Image](image/10.jpeg) 
 11. \
     ![Image](image/11.jpeg) 
 12. \
-    ![Image](image/12.jpeg) \
+    ![Image](image/12.jpeg) 
 
 
 
