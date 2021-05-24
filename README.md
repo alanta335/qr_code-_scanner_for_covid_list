@@ -20,10 +20,38 @@ BFH/recdRQxvgOGx8Toyv/2021
 
 [Release APK](https://github.com/alanta335/qr_code-_scanner_for_covid_list/raw/main/app-release.apk)
 ## How it Works ?
-1. Step 1 ![Image](image/fe.png)
+1. \
+   ![Image](image/1.jpeg)
+2. \
+   ![Image](image/2.jpeg)
+3. \
+   ![Image](image/3.jpeg) \
+4.1 \
+    ![Image](image/4.jpeg) \
+4.2 \
+    ![Image](image/4.2.jpeg) \
+5. \
+    ![Image](image/5.jpeg) \
+6. \
+    ![Image](image/6.jpeg) \
+7. \
+    ![Image](image/7.jpeg) \ 
+8. \
+    ![Image](image/8.jpeg) \
+9. \
+    ![Image](image/9.jpeg) \
+10. \
+    ![Image](image/10.jpeg) \
+11. \
+    ![Image](image/11.jpeg) 
+12. \
+    ![Image](image/12.jpeg) \
 
-Message @alanta335
-2. Step 2
+
+
+
+
+
 
 ## Libraries used
 
