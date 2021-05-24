@@ -21,6 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
   var a = 'ENTER THE DETAILS';
   FirebaseAuth auth = FirebaseAuth.instance;
   bool v = false;
+
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController pnoController = TextEditingController();
@@ -38,7 +39,12 @@ class _RegisterPageState extends State<RegisterPage> {
       animationType: AnimationType.grow,
       animationDuration: Duration(milliseconds: 400),
     );
-
+    String st;
+    if (us == true) {
+      st = "Your";
+    } else {
+      st = "Store";
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('Register your account'),
@@ -52,8 +58,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: TextField(
                   controller: nameController,
                   decoration: InputDecoration(
-                    hintText: 'Enter your name',
-                    labelText: 'name',
+                    hintText: 'Enter $st name',
+                    labelText: 'Name',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -64,7 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: TextField(
                   controller: pnoController,
                   decoration: InputDecoration(
-                    hintText: 'Enter your phone number',
+                    hintText: 'Enter $st phone number',
                     labelText: 'Phone number',
                     border: OutlineInputBorder(),
                   ),
@@ -76,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: TextField(
                   controller: emailController,
                   decoration: InputDecoration(
-                    hintText: 'Enter your email',
+                    hintText: 'Enter $st email',
                     labelText: 'Email',
                     border: OutlineInputBorder(),
                   ),
@@ -88,7 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: TextField(
                   controller: addresController,
                   decoration: InputDecoration(
-                    hintText: 'Enter your full address',
+                    hintText: 'Enter $st full address',
                     labelText: 'Address',
                     border: OutlineInputBorder(),
                   ),
@@ -124,7 +130,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: repasswordController,
                   decoration: InputDecoration(
                     hintText: 'Re-enter your password ',
-                    labelText: 're-enter password',
+                    labelText: 'Re-enter password',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.visiblePassword,
