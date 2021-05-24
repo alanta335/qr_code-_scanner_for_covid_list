@@ -45,11 +45,28 @@ Instructions for setting up project
 3. Clone the repository
 4. Run the below command in the cloned directory.\
    ```flutter pub get```
-5. Create a firebase project with name ```com.example.qr2``` (Default,Can be changed with some editing in AndroidManifest.xml) and download the JSON file    from Firebase
-put the firebase json file in the android\app\
-In the firebase enable firebase authentication (email and password).
-In the firebase enable firestore and start a collection named USER.
-
+5. Create a firebase project with name ```com.example.qr2``` (Default,Can be changed with some editing in AndroidManifest.xml) and download the JSON file    from Firebase\
+6. Put the Firebase JSON file in  <project-directory>\android\app\
+7. In the Firebase Console enable Firebase authentication(Email and Password).
+8. In the Firebase enable Firestore and start a collection named 
+   ```USER``` 
 
 ## How to Run
 Instructions for running
+   
+### Debug mode
+   
+   1. Open the cloned repository
+   2. In Terminal(Linux) or PowerShell(Windows) enter the command below to build and run debug while Android phone is connected via [Developer Mode](https://developer.android.com/studio/debug/dev-options)\
+      ```flutter run```
+   
+### Release mode 
+   1. Open the cloned repository
+   2. In Terminal(Linux) or PowerShell(Windows) enter the command below to build and run release version while Android phone is connected via [Developer Mode](https://developer.android.com/studio/debug/dev-options)\
+      ```flutter run --release```
+### Build apk for release mode
+   1. Open the cloned repository
+   2. In Terminal(Linux) or PowerShell(Windows) enter the command below to build release APK 
+      ```flutter build apk --release``` OR ```flutter build apk --release -split-per-abi``` for splitting APK per architecture
+   3. Copy the APK file named ```app-release.apk``` from the directory ```<project-directory>/build/app/outputs/flutter-apk```
+   4. [Install the APK in your phone](https://www.javatpoint.com/how-to-install-apk-on-android)
