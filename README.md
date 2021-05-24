@@ -7,10 +7,10 @@ QR code scanner is a mobile application where shopkeepers have an app that shows
 
 ## Team members
 
-1. [Alan T A](https://github.com/alanta335)
-2. [Akhil Krishna S](https://github.com/ilmentore72)
+1. [Alan T A](https://github.com/alanta335) ![GitHub Followers](https://img.shields.io/github/followers/alanta335?style=social) ![GitHub Forks](https://img.shields.io/github/forks/alanta335/qr_code-_scanner_for_covid_list?style=social)![Repo_Stars](https://img.shields.io/github/stars/alanta335/qr_code-_scanner_for_covid_list?style=social)
+2. [Akhil Krishna S](https://github.com/ilmentore72) ![GitHub Followers](https://img.shields.io/github/followers/ilmentore72?style=social) ![GitHub Forks](https://img.shields.io/github/forks/ilmentore72/qr_code-_scanner_for_covid_list?style=social) ![Repo_Stars](https://img.shields.io/github/stars/ilmentore72/qr_code-_scanner_for_covid_list?style=social)
 
-## Team Id
+## Team ID
 
 BFH/recdRQxvgOGx8Toyv/2021
 
@@ -18,9 +18,40 @@ BFH/recdRQxvgOGx8Toyv/2021
 
 [Video walkthrough](https://www.loom.com/share/56504be922274405a47afde25a27e1f3)
 
+[Release APK](https://github.com/alanta335/qr_code-_scanner_for_covid_list/raw/main/app-release.apk)
 ## How it Works ?
-1. Step 1
-2. Step 2
+1. \
+   ![Image](image/1.jpeg)
+2. \
+   ![Image](image/2.jpeg)
+3. \
+   ![Image](image/3.jpeg) \
+4.1 \
+    ![Image](image/4.jpeg) \
+4.2 \
+    ![Image](image/4.2.jpeg) \
+5. \
+    ![Image](image/5.jpeg) \
+6. \
+    ![Image](image/6.jpeg) 
+7. \
+    ![Image](image/7.jpeg) 
+8. \
+    ![Image](image/8.jpeg) 
+9. \
+    ![Image](image/9.jpeg) 
+10. \
+    ![Image](image/10.jpeg) 
+11. \
+    ![Image](image/11.jpeg) 
+12. \
+    ![Image](image/12.jpeg) 
+
+
+
+
+
+
 
 ## Libraries used
 
