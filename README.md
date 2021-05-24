@@ -19,7 +19,16 @@ BFH/recdRQxvgOGx8Toyv/2021
 [Video walkthrough](https://www.loom.com/share/56504be922274405a47afde25a27e1f3)
 
 [Release APK](https://github.com/alanta335/qr_code-_scanner_for_covid_list/raw/main/app-release.apk)
-## How it Works ?
+
+## Table of Contents
+
+- [How it Works](#How it Works)
+- [Libraries used](#Libraries-used)
+- [How to configure ?](#How-to-configure)
+- [How to Run ?](#How-to-Run)
+
+
+## How it Works
 1. Home Page \
    ![Image](image/1.jpeg)
 2. Register account\
