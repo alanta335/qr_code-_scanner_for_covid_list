@@ -45,12 +45,10 @@ BFH/recdRQxvgOGx8Toyv/2021
     ![Image](image/10.jpeg) 
 11. \
     ![Image](image/11.jpeg) 
-    
 12. \
 
     ![Image](image/12.jpeg) 
     
-13
 
 
 
