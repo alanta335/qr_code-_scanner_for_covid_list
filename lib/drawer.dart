@@ -5,6 +5,7 @@ import 'package:qr2/mreader.dart';
 import 'package:qr2/vstatus.dart';
 
 import 'help.dart';
+import 'qrScanner.dart';
 import 'screenscaling.dart';
 import 'about_us.dart';
 import 'main.dart';
@@ -86,7 +87,110 @@ class CmnDrawer extends StatelessWidget {
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
-                  title: Text('Visited Data',
+                  title: Text('selfe check',
+                      style: TextStyle(color: Color(0xFFFFFFFF))),
+                  onTap: () {},
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Card(
+                margin: EdgeInsets.only(right: 10),
+                shadowColor: Color(0xFF501474),
+                color: Colors.transparent,
+                child: ListTile(
+                  title: Text('scan qr',
+                      style: TextStyle(color: Color(0xFFFFFFFF))),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QRViewExample()));
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Card(
+                margin: EdgeInsets.only(right: 10),
+                shadowColor: Color(0xFF501474),
+                color: Colors.transparent,
+                child: ListTile(
+                  title: Text('nearby doctor',
+                      style: TextStyle(color: Color(0xFFFFFFFF))),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QRViewExample()));
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Card(
+                margin: EdgeInsets.only(right: 10),
+                shadowColor: Color(0xFF501474),
+                color: Colors.transparent,
+                child: ListTile(
+                  title: Text('search patiant',
+                      style: TextStyle(color: Color(0xFFFFFFFF))),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QRViewExample()));
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Card(
+                margin: EdgeInsets.only(right: 10),
+                shadowColor: Color(0xFF501474),
+                color: Colors.transparent,
+                child: ListTile(
+                  title:
+                      Text('sos', style: TextStyle(color: Color(0xFFFFFFFF))),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QRViewExample()));
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Card(
+                margin: EdgeInsets.only(right: 10),
+                shadowColor: Color(0xFF501474),
+                color: Colors.transparent,
+                child: ListTile(
+                  title: Text('file upload',
+                      style: TextStyle(color: Color(0xFFFFFFFF))),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QRViewExample()));
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Card(
+                margin: EdgeInsets.only(right: 10),
+                shadowColor: Color(0xFF501474),
+                color: Colors.transparent,
+                child: ListTile(
+                  title: Text('consulted',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
                     Navigator.push(

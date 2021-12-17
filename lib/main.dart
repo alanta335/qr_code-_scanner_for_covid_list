@@ -66,7 +66,7 @@ class ChoosingPage extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => RegisterPage(true)));
                   },
-                  child: Text('Register as Customer'),
+                  child: Text('Register as Doctor'),
                 ),
               ),
             ),
@@ -82,7 +82,7 @@ class ChoosingPage extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => RegisterPage(false)));
                   },
-                  child: Text('Register as Store Owner'),
+                  child: Text('Register as patient'),
                 ),
               ),
             ),

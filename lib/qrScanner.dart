@@ -7,6 +7,7 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'drawer.dart';
 import 'main.dart';
 import 'page2.dart';
+import 'pdataIn.dart';
 
 class QRViewExample extends StatefulWidget {
   @override
@@ -121,12 +122,33 @@ class _QRViewExampleState extends State<QRViewExample> {
                                             )));
                               }
                             },
-                            child: Text('Add Data',
+                            child: Text('see patiant details',
                                 style: TextStyle(fontSize: 20)),
                           ),
                         ),
                       ],
                     ),
+                  ),
+                  ElevatedButton(
+                    style: x,
+                    onPressed: () async {
+                      DocumentSnapshot patient = await FirebaseFirestore
+                          .instance
+                          .collection('USERS')
+                          .doc('$r')
+                          .get();
+                      if (r != null) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PdataIn(
+                                      pIDdata: r,
+                                      pdata: patient,
+                                    )));
+                      }
+                    },
+                    child: Text('Add patient Data',
+                        style: TextStyle(fontSize: 20)),
                   ),
                 ],
               ),
