@@ -107,7 +107,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                           child: ElevatedButton(
                             style: x,
                             onPressed: () async {
-                              DocumentSnapshot store = await FirebaseFirestore
+                              DocumentSnapshot patiant = await FirebaseFirestore
                                   .instance
                                   .collection('USERS')
                                   .doc('$r')
@@ -118,7 +118,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                                     MaterialPageRoute(
                                         builder: (context) => Page2Screen(
                                               data: r,
-                                              data2: store,
+                                              data2: patiant,
                                             )));
                               }
                             },

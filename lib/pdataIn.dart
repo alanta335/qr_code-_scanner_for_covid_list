@@ -16,6 +16,15 @@ class _PdataInState extends State<PdataIn> {
 
   FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController bpController = TextEditingController();
+  TextEditingController sugarController = TextEditingController();
+  TextEditingController tempController = TextEditingController();
+  TextEditingController oxyController = TextEditingController();
+  TextEditingController sleepController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+  TextEditingController painController = TextEditingController();
+  TextEditingController otherController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +48,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: bpController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
+                    hintText: 'Enter  bp',
+                    labelText: 'bp',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -49,10 +58,10 @@ class _PdataInState extends State<PdataIn> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
-                  controller: bpController,
+                  controller: sugarController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
+                    hintText: 'Enter  sugar',
+                    labelText: 'sugar',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -61,10 +70,10 @@ class _PdataInState extends State<PdataIn> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
-                  controller: bpController,
+                  controller: tempController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
+                    hintText: 'Enter  temp',
+                    labelText: 'temp',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -73,10 +82,10 @@ class _PdataInState extends State<PdataIn> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
-                  controller: bpController,
+                  controller: sleepController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
+                    hintText: 'Enter  sleep',
+                    labelText: 'sleep',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -85,10 +94,10 @@ class _PdataInState extends State<PdataIn> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
-                  controller: bpController,
+                  controller: oxyController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
+                    hintText: 'Enter  oxygen',
+                    labelText: 'oxygen',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -97,10 +106,10 @@ class _PdataInState extends State<PdataIn> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
-                  controller: bpController,
+                  controller: heightController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
+                    hintText: 'Enter  height',
+                    labelText: 'height',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -109,10 +118,10 @@ class _PdataInState extends State<PdataIn> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
-                  controller: bpController,
+                  controller: weightController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
+                    hintText: 'Enter  weight',
+                    labelText: 'weight',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -121,10 +130,10 @@ class _PdataInState extends State<PdataIn> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
-                  controller: bpController,
+                  controller: painController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
+                    hintText: 'Enter  pain',
+                    labelText: 'pain',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -133,34 +142,10 @@ class _PdataInState extends State<PdataIn> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
-                  controller: bpController,
+                  controller: otherController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
-                    border: OutlineInputBorder(),
-                  ),
-                  keyboardType: TextInputType.name,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextField(
-                  controller: bpController,
-                  decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
-                    border: OutlineInputBorder(),
-                  ),
-                  keyboardType: TextInputType.name,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextField(
-                  controller: bpController,
-                  decoration: InputDecoration(
-                    hintText: 'Enter  name',
-                    labelText: 'Name',
+                    hintText: 'Enter other',
+                    labelText: 'other',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -179,6 +164,14 @@ class _PdataInState extends State<PdataIn> {
                       'timestamp': DateTime.now().toString(),
                       'checkedDoctorId': FirebaseAuth.instance.currentUser!.uid,
                       'pid': pIDdata,
+                      'sug': sugarController,
+                      'temp': tempController,
+                      'oxy': oxyController,
+                      'sleep': sleepController,
+                      'height': heightController,
+                      'weight': weightController,
+                      'pain': painController,
+                      'other': otherController,
                     });
                   },
                   child: Text("save patient data"),

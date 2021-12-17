@@ -1,7 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:qr2/docupload.dart';
 import 'package:qr2/mreader.dart';
+import 'package:qr2/nearbyDr.dart';
+import 'package:qr2/self.dart';
+import 'package:qr2/serachpage.dart';
+import 'package:qr2/sospage.dart';
 import 'package:qr2/vstatus.dart';
 
 import 'help.dart';
@@ -89,7 +94,10 @@ class CmnDrawer extends StatelessWidget {
                 child: ListTile(
                   title: Text('selfe check',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => selfCheck()));
+                  },
                 ),
               ),
             ),
@@ -121,10 +129,8 @@ class CmnDrawer extends StatelessWidget {
                   title: Text('nearby doctor',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QRViewExample()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Nearby()));
                   },
                 ),
               ),
@@ -139,10 +145,8 @@ class CmnDrawer extends StatelessWidget {
                   title: Text('search patiant',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QRViewExample()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Search()));
                   },
                 ),
               ),
@@ -157,10 +161,8 @@ class CmnDrawer extends StatelessWidget {
                   title:
                       Text('sos', style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QRViewExample()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SosPage()));
                   },
                 ),
               ),
@@ -175,10 +177,8 @@ class CmnDrawer extends StatelessWidget {
                   title: Text('file upload',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QRViewExample()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => DocUpload()));
                   },
                 ),
               ),
