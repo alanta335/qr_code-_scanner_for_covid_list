@@ -30,7 +30,7 @@ class _UserInformationState extends State<UserInformation> {
         .doc('${FirebaseAuth.instance.currentUser!.uid}')
         .collection('patiant visited')
         .orderBy('time', descending: true);
-    //.collection('visited');
+
     print(FirebaseAuth.instance.currentUser!.uid);
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),

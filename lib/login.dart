@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                                     buttons: [
                                       DialogButton(
                                           child: Text(
-                                            "Customer",
+                                            "Doctor",
                                           ),
                                           onPressed: () {
                                             Navigator.push(
@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                                                         RegisterPage(true)));
                                           }),
                                       DialogButton(
-                                          child: Text("Store Owner"),
+                                          child: Text("Patiant"),
                                           onPressed: () {
                                             Navigator.push(
                                                 context,

@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'drawer.dart';
 
 class PRecord extends StatefulWidget {
@@ -11,6 +13,7 @@ class PRecord extends StatefulWidget {
 
 class _PRecordState extends State<PRecord> {
   var data;
+  var result = "";
   _PRecordState({@required this.data});
   @override
   Widget build(BuildContext context) {
@@ -27,74 +30,123 @@ class _PRecordState extends State<PRecord> {
             children: [
               Center(
                 child: Text(
-                  'Store Name: ${data['bp']}',
+                  'bp: ${data['bp']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['oxy']}',
+                  'oxy: ${data['oxy']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['height']}',
+                  'height: ${data['height']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['other']}',
+                  'other: ${data['other']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['pain']}',
+                  'pain: ${data['pain']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['pid']}',
+                  'patiant id: ${data['pid']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['sleep']}',
+                  'sleep time: ${data['sleep']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['sug']}',
+                  'sugar level: ${data['sug']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['temp']}',
+                  'temp: ${data['temp']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['timestamp']}',
+                  'time checked: ${data['timestamp']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
               Center(
                 child: Text(
-                  'Store Name: ${data['checkedDoctorId']}',
+                  'doctor id: ${data['checkedDoctorId']}',
                   style: TextStyle(fontSize: 10),
                 ),
               ),
+              Center(
+                child: Text(
+                  "$result",
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: ElevatedButton(
+                    onPressed: () async {
+                      var postData = await createAlbum(data['bp'].toString());
+                      var respconvert = albumFromJson(postData.body.toString());
+                      setState(() {
+                        result = respconvert.title;
+                      });
+                    },
+                    child: Text("Evaluvate")),
+              )
             ],
           ),
         ),
       ),
     );
   }
+}
+
+Album albumFromJson(String str) => Album.fromJson(json.decode(str));
+
+String albumToJson(Album data) => json.encode(data.toJson());
+
+class Album {
+  Album({
+    required this.title,
+  });
+
+  String title;
+
+  factory Album.fromJson(Map<String, dynamic> json) => Album(
+        title: json["title"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "title": title,
+      };
+}
+
+Future<http.Response> createAlbum(String title) {
+  return http.post(
+    Uri.parse('http://sfbsgda.pythonanywhere.com/cal'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'title': title,
+    }),
+  );
 }

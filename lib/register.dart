@@ -28,6 +28,8 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController addresController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repasswordController = TextEditingController();
+  TextEditingController pincodeController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var alertStyle = AlertStyle(
@@ -41,9 +43,9 @@ class _RegisterPageState extends State<RegisterPage> {
     );
     String st;
     if (us == true) {
-      st = "Your";
+      st = "Doctor";
     } else {
-      st = "Store";
+      st = "patiant";
     }
     return Scaffold(
       appBar: AppBar(
@@ -96,6 +98,18 @@ class _RegisterPageState extends State<RegisterPage> {
                   decoration: InputDecoration(
                     hintText: 'Enter $st full address',
                     labelText: 'Address',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.streetAddress,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: pincodeController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter $st pincode',
+                    labelText: 'pincode',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.streetAddress,
@@ -187,6 +201,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         'email': emailController.text,
                         'pno': pnoController.text,
                         'addres': addresController.text,
+                        'pincode': pincodeController.text,
                         'timestamp': DateTime.now().toString(),
                         'userId': FirebaseAuth.instance.currentUser!.uid,
                         'user_type': us,

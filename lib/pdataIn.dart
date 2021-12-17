@@ -6,15 +6,18 @@ import 'package:qr2/drawer.dart';
 import 'mreader.dart';
 
 class PdataIn extends StatefulWidget {
-  final pIDdata, pdata;
-  const PdataIn({@required this.pIDdata, @required this.pdata});
+  final pIDdata, pdata, type;
+  const PdataIn(
+      {@required this.pIDdata, @required this.pdata, @required this.type});
   @override
-  _PdataInState createState() => _PdataInState(pIDdata: pIDdata, pdata: pdata);
+  _PdataInState createState() =>
+      _PdataInState(pIDdata: pIDdata, pdata: pdata, type: type);
 }
 
 class _PdataInState extends State<PdataIn> {
-  final pIDdata, pdata;
-  _PdataInState({@required this.pIDdata, @required this.pdata});
+  final pIDdata, pdata, type;
+  _PdataInState(
+      {@required this.pIDdata, @required this.pdata, @required this.type});
 
   FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController bpController = TextEditingController();

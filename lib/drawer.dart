@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:qr2/docupload.dart';
 import 'package:qr2/mreader.dart';
 import 'package:qr2/nearbyDr.dart';
-import 'package:qr2/self.dart';
 import 'package:qr2/serachpage.dart';
 import 'package:qr2/sospage.dart';
 import 'package:qr2/vstatus.dart';
@@ -92,29 +91,15 @@ class CmnDrawer extends StatelessWidget {
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
-                  title: Text('selfe check',
-                      style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => selfCheck()));
-                  },
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Card(
-                margin: EdgeInsets.only(right: 10),
-                shadowColor: Color(0xFF501474),
-                color: Colors.transparent,
-                child: ListTile(
                   title: Text('scan qr',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QRViewExample()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QRViewExample(),
+                      ),
+                    );
                   },
                 ),
               ),

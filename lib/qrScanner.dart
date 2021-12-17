@@ -15,6 +15,7 @@ class QRViewExample extends StatefulWidget {
 }
 
 var r;
+var a = "self check data enter";
 
 class _QRViewExampleState extends State<QRViewExample> {
   Barcode? result;
@@ -114,12 +115,14 @@ class _QRViewExampleState extends State<QRViewExample> {
                                   .get();
                               if (r != null) {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Page2Screen(
-                                              data: r,
-                                              data2: patiant,
-                                            )));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Page2Screen(
+                                      data: r,
+                                      data2: patiant,
+                                    ),
+                                  ),
+                                );
                               }
                             },
                             child: Text('see patiant details',
@@ -144,11 +147,20 @@ class _QRViewExampleState extends State<QRViewExample> {
                                 builder: (context) => PdataIn(
                                       pIDdata: r,
                                       pdata: patient,
+                                      type: 0,
+                                    )));
+                      } else {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PdataIn(
+                                      pIDdata: r,
+                                      pdata: patient,
+                                      type: 4,
                                     )));
                       }
                     },
-                    child: Text('Add patient Data',
-                        style: TextStyle(fontSize: 20)),
+                    child: Text('$a', style: TextStyle(fontSize: 20)),
                   ),
                 ],
               ),
@@ -187,6 +199,9 @@ class _QRViewExampleState extends State<QRViewExample> {
       setState(() {
         result = scanData;
         r = result!.code;
+        if (r != null) {
+          a = "Add patient Data";
+        }
       });
     });
   }
