@@ -80,7 +80,7 @@ class _UserInformationState extends State<UserInformation> {
                         .doc('${document.get('time').toString()}')
                         .get();
                     print(
-                        '${document.get('visitedId').toString()}---------------${document.get('time').toString()}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+                        '${document.get('visitedId').toString()}---------------${document.get('time').toString().substring(0, 16)}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
                     Navigator.push(
                       context,
                       MaterialPageRoute(

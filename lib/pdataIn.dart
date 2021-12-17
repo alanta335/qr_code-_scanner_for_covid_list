@@ -175,7 +175,7 @@ class _PdataInState extends State<PdataIn> {
                       'address': store['addres'],
                       'phno': store['pno'],
                       'visitedId': store['userId'],
-                      'time': DateTime.now().toString(),
+                      'time': DateTime.now().toString().substring(0, 16),
                       'vaccination_status': store['vaccination_status'],
                     });
                     print(store['name']);
@@ -184,7 +184,7 @@ class _PdataInState extends State<PdataIn> {
                         .collection('USERS')
                         .doc('$pIDdata')
                         .collection('doctor visited')
-                        .doc(DateTime.now().toString())
+                        .doc(DateTime.now().toString().substring(0, 16))
                         .set({
                       'name': 'DR.${user['name']}',
                       'type': 'doctor',
@@ -198,10 +198,10 @@ class _PdataInState extends State<PdataIn> {
                         .collection('USERS')
                         .doc('$pIDdata')
                         .collection('reading')
-                        .doc(DateTime.now().toString())
+                        .doc(DateTime.now().toString().substring(0, 16))
                         .set({
                       'bp': bpController.text,
-                      'timestamp': DateTime.now().toString(),
+                      'timestamp': DateTime.now().toString().substring(0, 16),
                       'checkedDoctorId': FirebaseAuth.instance.currentUser!.uid,
                       'pid': pIDdata,
                       'sug': sugarController.text,
