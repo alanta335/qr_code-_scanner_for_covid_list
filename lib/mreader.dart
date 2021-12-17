@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:qr2/pmrecord.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -27,7 +28,7 @@ class _UserInformationState extends State<UserInformation> {
     Query users = FirebaseFirestore.instance
         .collection('USERS')
         .doc('${FirebaseAuth.instance.currentUser!.uid}')
-        .collection('visited')
+        .collection('patiant visited')
         .orderBy('time', descending: true);
     //.collection('visited');
     print(FirebaseAuth.instance.currentUser!.uid);
@@ -71,6 +72,20 @@ class _UserInformationState extends State<UserInformation> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               return Card(
                 child: ListTile(
+                  onLongPress: () async {
+                    DocumentSnapshot patiant = await FirebaseFirestore.instance
+                        .collection('USERS')
+                        .doc('${document.get('visitedId')}')
+                        .get();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PRecord(
+                          data: patiant,
+                        ),
+                      ),
+                    );
+                  },
                   title: Text('${document.get('name')}'),
                   subtitle: Text(
                       'Address : ${document.get('address')}\nVisited on ${document.get('time')}'),

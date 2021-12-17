@@ -10,15 +10,15 @@ class Page2Screen extends StatefulWidget {
   final data, data2;
   Page2Screen({@required this.data, @required this.data2});
   @override
-  _Page2ScreenState createState() =>
-      _Page2ScreenState(storeid: data, x1: data2);
+  _Page2ScreenState createState() => _Page2ScreenState(pid: data, x1: data2);
 }
 
 class _Page2ScreenState extends State<Page2Screen> {
-  var storeid;
+  var pid;
   DocumentSnapshot? x1;
-  _Page2ScreenState({@required this.storeid, @required this.x1});
+  _Page2ScreenState({@required this.pid, @required this.x1});
   TextEditingController messageController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +62,15 @@ class _Page2ScreenState extends State<Page2Screen> {
                 ),
               ),
               ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserInformation()));
+                },
+                child: Text("see medical records"),
+              ),
+              ElevatedButton(
                 style: x,
                 onPressed: () async {
                   DocumentSnapshot user = await FirebaseFirestore.instance
@@ -70,15 +79,16 @@ class _Page2ScreenState extends State<Page2Screen> {
                       .get();
                   DocumentSnapshot store = await FirebaseFirestore.instance
                       .collection('USERS')
-                      .doc('$storeid')
+                      .doc('$pid')
                       .get();
                   FirebaseFirestore.instance
                       .collection('USERS')
                       .doc('${FirebaseAuth.instance.currentUser!.uid}')
-                      .collection('visited')
-                      .doc()
+                      .collection('patiant visited')
+                      .doc(DateTime.now().toString())
                       .set({
                     'name': store['name'],
+                    'type': 'patiant',
                     'address': store['addres'],
                     'phno': store['pno'],
                     'visitedId': store['userId'],
@@ -89,11 +99,12 @@ class _Page2ScreenState extends State<Page2Screen> {
                   print(user['name']);
                   FirebaseFirestore.instance
                       .collection('USERS')
-                      .doc('$storeid')
+                      .doc('$pid')
                       .collection('doctor visited')
-                      .doc()
+                      .doc(DateTime.now().toString())
                       .set({
                     'name': 'DR.${user['name']}',
+                    'type': 'doctor',
                     'address': user['addres'],
                     'phno': user['pno'],
                     'visitedId': user['userId'],
