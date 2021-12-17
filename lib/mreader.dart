@@ -75,8 +75,12 @@ class _UserInformationState extends State<UserInformation> {
                   onLongPress: () async {
                     DocumentSnapshot patiant = await FirebaseFirestore.instance
                         .collection('USERS')
-                        .doc('${document.get('visitedId')}')
+                        .doc('${document.get('visitedId').toString()}')
+                        .collection('reading')
+                        .doc('${document.get('time').toString()}')
                         .get();
+                    print(
+                        '${document.get('visitedId').toString()}---------------${document.get('time').toString()}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
                     Navigator.push(
                       context,
                       MaterialPageRoute(

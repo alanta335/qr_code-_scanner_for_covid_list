@@ -70,54 +70,6 @@ class _Page2ScreenState extends State<Page2Screen> {
                 },
                 child: Text("see medical records"),
               ),
-              ElevatedButton(
-                style: x,
-                onPressed: () async {
-                  DocumentSnapshot user = await FirebaseFirestore.instance
-                      .collection('USERS')
-                      .doc('${FirebaseAuth.instance.currentUser!.uid}')
-                      .get();
-                  DocumentSnapshot store = await FirebaseFirestore.instance
-                      .collection('USERS')
-                      .doc('$pid')
-                      .get();
-                  FirebaseFirestore.instance
-                      .collection('USERS')
-                      .doc('${FirebaseAuth.instance.currentUser!.uid}')
-                      .collection('patiant visited')
-                      .doc(DateTime.now().toString())
-                      .set({
-                    'name': store['name'],
-                    'type': 'patiant',
-                    'address': store['addres'],
-                    'phno': store['pno'],
-                    'visitedId': store['userId'],
-                    'time': DateTime.now().toString(),
-                    'vaccination_status': store['vaccination_status'],
-                  });
-                  print(store['name']);
-                  print(user['name']);
-                  FirebaseFirestore.instance
-                      .collection('USERS')
-                      .doc('$pid')
-                      .collection('doctor visited')
-                      .doc(DateTime.now().toString())
-                      .set({
-                    'name': 'DR.${user['name']}',
-                    'type': 'doctor',
-                    'address': user['addres'],
-                    'phno': user['pno'],
-                    'visitedId': user['userId'],
-                    'time': DateTime.now().toString(),
-                    'vaccination_status': user['vaccination_status'],
-                  });
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UserInformation()));
-                },
-                child: Text('attended'),
-              ),
             ],
           ),
         ),

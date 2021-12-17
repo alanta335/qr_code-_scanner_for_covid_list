@@ -14,6 +14,7 @@ class _PRecordState extends State<PRecord> {
   _PRecordState({@required this.data});
   @override
   Widget build(BuildContext context) {
+    print('${data['bp'].toString()}+++++++++++++++++++++++++++++');
     return Scaffold(
       drawer: CmnDrawer(),
       appBar: AppBar(
@@ -22,7 +23,75 @@ class _PRecordState extends State<PRecord> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            children: [],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Text(
+                  'Store Name: ${data['bp']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['oxy']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['height']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['other']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['pain']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['pid']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['sleep']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['sug']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['temp']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['timestamp']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Store Name: ${data['checkedDoctorId']}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+            ],
           ),
         ),
       ),

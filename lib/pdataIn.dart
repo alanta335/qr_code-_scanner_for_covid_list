@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:qr2/drawer.dart';
 
+import 'mreader.dart';
+
 class PdataIn extends StatefulWidget {
   final pIDdata, pdata;
   const PdataIn({@required this.pIDdata, @required this.pdata});
@@ -154,6 +156,44 @@ class _PdataInState extends State<PdataIn> {
               Center(
                 child: ElevatedButton(
                   onPressed: () async {
+                    DocumentSnapshot user = await FirebaseFirestore.instance
+                        .collection('USERS')
+                        .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                        .get();
+                    DocumentSnapshot store = await FirebaseFirestore.instance
+                        .collection('USERS')
+                        .doc('$pIDdata')
+                        .get();
+                    FirebaseFirestore.instance
+                        .collection('USERS')
+                        .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                        .collection('patiant visited')
+                        .doc(DateTime.now().toString())
+                        .set({
+                      'name': store['name'],
+                      'type': 'patiant',
+                      'address': store['addres'],
+                      'phno': store['pno'],
+                      'visitedId': store['userId'],
+                      'time': DateTime.now().toString(),
+                      'vaccination_status': store['vaccination_status'],
+                    });
+                    print(store['name']);
+                    print(user['name']);
+                    FirebaseFirestore.instance
+                        .collection('USERS')
+                        .doc('$pIDdata')
+                        .collection('doctor visited')
+                        .doc(DateTime.now().toString())
+                        .set({
+                      'name': 'DR.${user['name']}',
+                      'type': 'doctor',
+                      'address': user['addres'],
+                      'phno': user['pno'],
+                      'visitedId': user['userId'],
+                      'time': DateTime.now().toString(),
+                      'vaccination_status': user['vaccination_status'],
+                    });
                     FirebaseFirestore.instance
                         .collection('USERS')
                         .doc('$pIDdata')
@@ -173,6 +213,10 @@ class _PdataInState extends State<PdataIn> {
                       'pain': painController.text,
                       'other': otherController.text,
                     });
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserInformation()));
                   },
                   child: Text("save patient data"),
                 ),
