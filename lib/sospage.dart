@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vscan/screenscaling.dart';
 
 import 'drawer.dart';
 
@@ -15,11 +16,22 @@ class _SosPageState extends State<SosPage> {
     return Scaffold(
         drawer: CmnDrawer(),
         appBar: AppBar(
-          title: Text('Search patiant details'),
+          backgroundColor: Colors.deepPurple.shade400,
+          title: Text('SOS'),
         ),
         body: SafeArea(
             child: Column(
-          children: [],
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 300),
+                Center(
+                    child: ElevatedButton(
+                        style: x, onPressed: () {}, child: Text('SOS'))),
+              ],
+            )
+          ],
         )));
   }
 }

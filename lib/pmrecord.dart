@@ -21,7 +21,7 @@ class _PRecordState extends State<PRecord> {
     return Scaffold(
       drawer: CmnDrawer(),
       appBar: AppBar(
-        title: Text('patiant Details'),
+        title: Text('Patient Details'),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -109,7 +109,6 @@ class _PRecordState extends State<PRecord> {
                           data['bp'].toString(),
                           data['height'].toString(),
                           data['oxy'].toString(),
-                          data['pid'].toString(),
                           data['sleep'].toString(),
                           data['sug'].toString(),
                           data['temp'].toString());
@@ -119,7 +118,7 @@ class _PRecordState extends State<PRecord> {
                         result = respconvert.bp;
                       });
                     },
-                    child: Text("Evaluvate")),
+                    child: Text("Evaluate")),
               )
             ],
           ),
@@ -139,7 +138,6 @@ class Album {
     required this.height,
     required this.weight,
     required this.oxy,
-    required this.pid,
     required this.sleep,
     required this.sug,
     required this.temp,
@@ -149,7 +147,7 @@ class Album {
   String height;
   String weight;
   String oxy;
-  String pid;
+
   String sleep;
   String sug;
   String temp;
@@ -158,7 +156,6 @@ class Album {
         bp: json["bp"],
         height: json["height"],
         oxy: json["oxy"],
-        pid: json["pid"],
         sleep: json["sleep"],
         sug: json["sug"],
         temp: json["temp"],
@@ -169,7 +166,6 @@ class Album {
         "bp": bp,
         "height": height,
         "oxy": oxy,
-        "pid": pid,
         "sleep": sleep,
         "sug": sug,
         "temp": temp,
@@ -177,9 +173,9 @@ class Album {
       };
 }
 
-Future<http.Response> createAlbum(String bp, String height, String pid,
-    String oxy, String sug, String temp, String sleep, String weight) {
-  var u = http.post(
+Future<http.Response> createAlbum(String bp, String height, String oxy,
+    String sug, String temp, String sleep, String weight) {
+  return http.post(
     Uri.parse('http://sfbsgda.pythonanywhere.com/cal'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -189,11 +185,9 @@ Future<http.Response> createAlbum(String bp, String height, String pid,
       "height": height,
       "weight": weight,
       "oxy": oxy,
-      "pid": pid,
       "sleep": sleep,
       "sug": sug,
       "temp": temp,
     }),
   );
-  return u;
 }

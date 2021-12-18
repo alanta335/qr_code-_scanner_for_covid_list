@@ -92,7 +92,7 @@ class CmnDrawer extends StatelessWidget {
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
-                  title: Text('my qr code',
+                  title: Text('Share my QR',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
                     Navigator.push(
@@ -112,7 +112,7 @@ class CmnDrawer extends StatelessWidget {
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
-                  title: Text('scan qr',
+                  title: Text('Scan a QR',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
                     Navigator.push(
@@ -132,7 +132,7 @@ class CmnDrawer extends StatelessWidget {
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
-                  title: Text('nearby doctor',
+                  title: Text('Nearby Doctors',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
                     Navigator.push(context,
@@ -148,7 +148,7 @@ class CmnDrawer extends StatelessWidget {
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
-                  title: Text('search patiant',
+                  title: Text('Search Patients',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
                     Navigator.push(context,
@@ -165,7 +165,7 @@ class CmnDrawer extends StatelessWidget {
                 color: Colors.transparent,
                 child: ListTile(
                   title:
-                      Text('sos', style: TextStyle(color: Color(0xFFFFFFFF))),
+                      Text('SOS', style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SosPage()));
@@ -180,7 +180,7 @@ class CmnDrawer extends StatelessWidget {
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
-                  title: Text('file upload',
+                  title: Text('Upload files',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
                     Navigator.push(context,
@@ -196,7 +196,7 @@ class CmnDrawer extends StatelessWidget {
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
-                  title: Text('consulted',
+                  title: Text('Consulted Doctors',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () async {
                     DocumentSnapshot user = await FirebaseFirestore.instance

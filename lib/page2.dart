@@ -24,7 +24,7 @@ class _Page2ScreenState extends State<Page2Screen> {
     return Scaffold(
       drawer: CmnDrawer(),
       appBar: AppBar(
-        title: Text('patiant Details'),
+        title: Text('Patient Details'),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -57,7 +57,7 @@ class _Page2ScreenState extends State<Page2Screen> {
               ),
               Center(
                 child: Text(
-                  "vaccinated: ${x1!['vaccination_status']}",
+                  "Vaccinated: ${x1!['vaccination_status']}",
                   style: TextStyle(fontSize: 10),
                 ),
               ),
@@ -73,7 +73,7 @@ class _Page2ScreenState extends State<Page2Screen> {
                           builder: (context) =>
                               UserInformation(type: user['user_type'])));
                 },
-                child: Text("see medical records"),
+                child: Text("See medical records"),
               ),
             ],
           ),

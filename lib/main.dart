@@ -24,6 +24,7 @@ class ChoosingPage extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.deepPurple.shade400,
         title: Center(
           child: Text(
             'V-Scan',

@@ -38,6 +38,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     return Scaffold(
       drawer: CmnDrawer(),
       appBar: AppBar(
+        backgroundColor: Colors.deepPurple.shade400,
         title: Text('Scan the QR Code'),
       ),
       body: Column(

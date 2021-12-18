@@ -34,10 +34,10 @@ class _PdataInState extends State<PdataIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: new CmnDrawer(),
-      backgroundColor: Color(0x9FFA59F2),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          "patient data collection",
+          "Patient Data Collection",
           style: TextStyle(
             color: Colors.white70,
           ),
@@ -53,8 +53,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: bpController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  bp',
-                    labelText: 'bp',
+                    hintText: 'Enter the blood pressure',
+                    labelText: 'Blood pressure',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -65,8 +65,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: sugarController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  sugar',
-                    labelText: 'sugar',
+                    hintText: 'Enter blood sugar level',
+                    labelText: 'Sugar level in mg',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -77,8 +77,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: tempController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  temp',
-                    labelText: 'temp',
+                    hintText: 'Enter the body temperature',
+                    labelText: 'Temperature',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -89,8 +89,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: sleepController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  sleep',
-                    labelText: 'sleep',
+                    hintText: 'Enter sleep duration',
+                    labelText: 'Sleep duration in hours',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -101,8 +101,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: oxyController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  oxygen',
-                    labelText: 'oxygen',
+                    hintText: 'Enter Oxygen level',
+                    labelText: 'Oxygen level',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -113,8 +113,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: heightController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  height',
-                    labelText: 'height',
+                    hintText: 'Enter the height',
+                    labelText: 'Height',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -125,8 +125,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: weightController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  weight',
-                    labelText: 'weight',
+                    hintText: 'Enter the body Weight: ',
+                    labelText: 'Weight',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -137,8 +137,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: painController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  pain',
-                    labelText: 'pain',
+                    hintText: 'Enter about Pain details:',
+                    labelText: 'Enter here',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -149,8 +149,8 @@ class _PdataInState extends State<PdataIn> {
                 child: TextField(
                   controller: otherController,
                   decoration: InputDecoration(
-                    hintText: 'Enter other',
-                    labelText: 'other',
+                    hintText: 'Enter other symptoms:',
+                    labelText: 'Symptoms',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,

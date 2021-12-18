@@ -49,6 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.deepPurple.shade400,
         title: Text('Register your account'),
       ),
       body: Center(

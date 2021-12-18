@@ -58,7 +58,7 @@ class _DoctorlistState extends State<Doctorlist> {
         return Scaffold(
           drawer: new CmnDrawer(),
           appBar: AppBar(
-            title: Text('Visited Database'),
+            title: Text('Nearby Doctor'),
           ),
           body: ListView(
             addAutomaticKeepAlives: false,

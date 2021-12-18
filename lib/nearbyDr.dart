@@ -34,7 +34,8 @@ class _NearbyState extends State<Nearby> {
     return Scaffold(
       drawer: CmnDrawer(),
       appBar: AppBar(
-        title: Text('patiant Details'),
+        backgroundColor: Colors.deepPurple.shade400,
+        title: Text('Nearby Doctors'),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -44,10 +45,11 @@ class _NearbyState extends State<Nearby> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
+                  maxLength: 6,
                   controller: pinController,
                   decoration: InputDecoration(
-                    hintText: 'Enter  pincode to search',
-                    labelText: 'pincode',
+                    hintText: 'Enter Pincode to search',
+                    labelText: 'Pincode',
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.name,
@@ -62,7 +64,7 @@ class _NearbyState extends State<Nearby> {
                                 Doctorlist(pincode: pinController.text)));
                     print('${pinController.text}----------');
                   },
-                  child: Text("search")),
+                  child: Text("Search")),
             ],
           ),
         ),

@@ -37,7 +37,7 @@ class _VaccinationStatusState extends State<VaccinationStatus> {
                     .collection('USERS')
                     .doc('${FirebaseAuth.instance.currentUser!.uid}')
                     .update({
-                  'vaccination_status': v,
+                  'Vaccination_status': v,
                 });
               },
               child: Text('Change status'))

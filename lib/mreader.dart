@@ -32,11 +32,11 @@ class _UserInformationState extends State<UserInformation> {
     String s = "";
     if (type == 'true') {
       setState(() {
-        s = "doctor visited";
+        s = "Doctors visited";
       });
     } else {
       setState(() {
-        s = "patiant visited";
+        s = "Patients Consulted";
       });
     }
     Query users = FirebaseFirestore.instance

@@ -19,7 +19,8 @@ class _SearchState extends State<Search> {
     return Scaffold(
         drawer: CmnDrawer(),
         appBar: AppBar(
-          title: Text('Search patiant details'),
+          backgroundColor: Colors.deepPurple.shade400,
+          title: Text('Search patient details'),
         ),
         body: SafeArea(
             child: Column(
@@ -29,7 +30,7 @@ class _SearchState extends State<Search> {
               child: TextField(
                 controller: idController,
                 decoration: InputDecoration(
-                  hintText: 'Enter patient id',
+                  hintText: 'Enter patient ID',
                   labelText: 'id',
                   border: OutlineInputBorder(),
                 ),
@@ -52,7 +53,7 @@ class _SearchState extends State<Search> {
                                   data2: patiant,
                                 )));
                   },
-                  child: Text("search")),
+                  child: Text("Search")),
             ),
           ],
         )));

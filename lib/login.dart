@@ -113,8 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                                 Alert(
                                     style: alertStyle,
                                     context: context,
-                                    title:
-                                        "Register as customer or store owner?",
+                                    title: "Register as patient or Doctor?",
                                     buttons: [
                                       DialogButton(
                                           child: Text(
@@ -128,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                                                         RegisterPage(true)));
                                           }),
                                       DialogButton(
-                                          child: Text("Patiant"),
+                                          child: Text("Patient"),
                                           onPressed: () {
                                             Navigator.push(
                                                 context,
