@@ -9,6 +9,7 @@ import 'package:qr2/sospage.dart';
 import 'package:qr2/vstatus.dart';
 
 import 'help.dart';
+import 'qrGenerator.dart';
 import 'qrScanner.dart';
 import 'screenscaling.dart';
 import 'about_us.dart';
@@ -80,6 +81,26 @@ class CmnDrawer extends StatelessWidget {
                                   addres: user['addres'],
                                   vstatus: user['vaccination_status'],
                                 )));
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Card(
+                margin: EdgeInsets.only(right: 10),
+                shadowColor: Color(0xFF501474),
+                color: Colors.transparent,
+                child: ListTile(
+                  title: Text('my qr code',
+                      style: TextStyle(color: Color(0xFFFFFFFF))),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => GeneratePage(),
+                      ),
+                    );
                   },
                 ),
               ),
