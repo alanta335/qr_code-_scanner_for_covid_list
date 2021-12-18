@@ -29,5 +29,5 @@ class SizeConfig {
 }
 
 var x = ButtonStyle(
-  backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurple.shade400),
+  backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
 );

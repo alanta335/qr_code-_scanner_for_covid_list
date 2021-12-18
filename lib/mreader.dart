@@ -30,7 +30,7 @@ class _UserInformationState extends State<UserInformation> {
       animationDuration: Duration(milliseconds: 400),
     );
     String s = "";
-    if (type == true) {
+    if (type == 'true') {
       setState(() {
         s = "doctor visited";
       });

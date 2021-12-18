@@ -179,7 +179,7 @@ class Album {
 
 Future<http.Response> createAlbum(String bp, String height, String pid,
     String oxy, String sug, String temp, String sleep, String weight) {
-  return http.post(
+  var u = http.post(
     Uri.parse('http://sfbsgda.pythonanywhere.com/cal'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -195,4 +195,5 @@ Future<http.Response> createAlbum(String bp, String height, String pid,
       "temp": temp,
     }),
   );
+  return u;
 }
