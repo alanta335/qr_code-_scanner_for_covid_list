@@ -103,10 +103,19 @@ class _PRecordState extends State<PRecord> {
               Center(
                 child: ElevatedButton(
                     onPressed: () async {
-                      var postData = await createAlbum(data['bp'].toString());
+                      print("\n\n\n\n${data['bp']}");
+                      var postData = await createAlbum(
+                          data['bp'].toString(),
+                          data['height'].toString(),
+                          data['oxy'].toString(),
+                          data['pid'].toString(),
+                          data['sleep'].toString(),
+                          data['sug'].toString(),
+                          data['temp'].toString());
                       var respconvert = albumFromJson(postData.body.toString());
+                      print('${respconvert.toString()}+++++___________');
                       setState(() {
-                        result = respconvert.title;
+                        result = respconvert.bp;
                       });
                     },
                     child: Text("Evaluvate")),
@@ -125,28 +134,60 @@ String albumToJson(Album data) => json.encode(data.toJson());
 
 class Album {
   Album({
-    required this.title,
+    required this.bp,
+    required this.height,
+    required this.oxy,
+    required this.pid,
+    required this.sleep,
+    required this.sug,
+    required this.temp,
   });
 
-  String title;
+  String bp;
+  String height;
+
+  String oxy;
+  String pid;
+  String sleep;
+  String sug;
+  String temp;
 
   factory Album.fromJson(Map<String, dynamic> json) => Album(
-        title: json["title"],
+        bp: json["bp"],
+        height: json["height"],
+        oxy: json["oxy"],
+        pid: json["pid"],
+        sleep: json["sleep"],
+        sug: json["sug"],
+        temp: json["temp"],
       );
 
   Map<String, dynamic> toJson() => {
-        "title": title,
+        "bp": bp,
+        "height": height,
+        "oxy": oxy,
+        "pid": pid,
+        "sleep": sleep,
+        "sug": sug,
+        "temp": temp,
       };
 }
 
-Future<http.Response> createAlbum(String title) {
+Future<http.Response> createAlbum(String bp, String height, String pid,
+    String oxy, String sug, String temp, String sleep) {
   return http.post(
     Uri.parse('http://sfbsgda.pythonanywhere.com/cal'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, String>{
-      'title': title,
+      "bp": bp,
+      "height": height,
+      "oxy": oxy,
+      "pid": pid,
+      "sleep": sleep,
+      "sug": sug,
+      "temp": temp,
     }),
   );
 }
