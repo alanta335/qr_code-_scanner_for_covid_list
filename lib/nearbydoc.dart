@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'drawer.dart';
 import 'mreader.dart';
 
@@ -66,22 +66,13 @@ class _DoctorlistState extends State<Doctorlist> {
                   (document.get('user_type') == true)) {
                 return Card(
                   child: ListTile(
-                    onLongPress: () async {
-                      DocumentSnapshot patiant = await FirebaseFirestore
-                          .instance
-                          .collection('USERS')
-                          .doc('${document.get('visitedId').toString()}')
-                          .collection('reading')
-                          .doc('${document.get('time').toString()}')
-                          .get();
-                      print(
-                          '${document.get('visitedId').toString()}---------------${document.get('time').toString().substring(0, 16)}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+                    onLongPress: () {
+                      _callNumber(document.get('pno'));
                     },
                     title: Text('${document.get('name')}'),
-                    subtitle: Text(
-                        'Address : ${document.get('addres')}\nVisited on ${document.get('timestamp')}'),
+                    subtitle: Text('Address : ${document.get('addres')}}'),
                     trailing: Text(
-                        'Phone Number:${document.get('pno')}\nVaccination status: ${document.get('vaccination_status')}'),
+                        'Phone Number:${document.get('pno')}\nFully vaccinated : ${document.get('vaccination_status')}'),
                     isThreeLine: true,
                   ),
                 );
@@ -93,4 +84,8 @@ class _DoctorlistState extends State<Doctorlist> {
       },
     );
   }
+  _callNumber(String telno) async{
+  
+  bool? res = await FlutterPhoneDirectCaller.callNumber(telno);
+}
 }

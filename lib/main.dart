@@ -26,7 +26,7 @@ class ChoosingPage extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: Text(
-            'CoViQRr',
+            'V-Scan',
             textAlign: TextAlign.center,
           ),
         ),

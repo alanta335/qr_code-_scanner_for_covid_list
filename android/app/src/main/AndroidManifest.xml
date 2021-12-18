@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.qr2">
+    package="com.example.vscan">
         <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="CoViQrR"
+        android:label="V-Scan"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

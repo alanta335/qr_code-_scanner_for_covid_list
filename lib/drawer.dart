@@ -48,7 +48,7 @@ class CmnDrawer extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      "CoViQrR",
+                      "V-Scan",
                       style: TextStyle(
                           color: Color(0xFFFFFFFF),
                           fontWeight: FontWeight.bold,
