@@ -2,12 +2,12 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:qr2/screenscaling.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'drawer.dart';
 import 'main.dart';
 import 'page2.dart';
 import 'pdataIn.dart';
+import 'screenscaling.dart';
 
 class QRViewExample extends StatefulWidget {
   @override

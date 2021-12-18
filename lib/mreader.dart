@@ -1,18 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:qr2/pmrecord.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'drawer.dart';
+import 'pmrecord.dart';
 
 class UserInformation extends StatefulWidget {
+  final type;
+  const UserInformation({required this.type});
   @override
-  _UserInformationState createState() => _UserInformationState();
+  _UserInformationState createState() => _UserInformationState(type: type);
 }
 
 class _UserInformationState extends State<UserInformation> {
+  final type;
+  _UserInformationState({required this.type});
   @override
   Widget build(BuildContext context) {
     //var c;
@@ -25,10 +29,20 @@ class _UserInformationState extends State<UserInformation> {
       animationType: AnimationType.grow,
       animationDuration: Duration(milliseconds: 400),
     );
+    String s = "";
+    if (type == true) {
+      setState(() {
+        s = "doctor visited";
+      });
+    } else {
+      setState(() {
+        s = "patiant visited";
+      });
+    }
     Query users = FirebaseFirestore.instance
         .collection('USERS')
         .doc('${FirebaseAuth.instance.currentUser!.uid}')
-        .collection('patiant visited')
+        .collection('$s')
         .orderBy('time', descending: true);
 
     print(FirebaseAuth.instance.currentUser!.uid);
@@ -42,7 +56,7 @@ class _UserInformationState extends State<UserInformation> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => UserInformation()));
+                            builder: (context) => UserInformation(type: type)));
                   },
                   title: "Error!",
                   style: alertStyle,

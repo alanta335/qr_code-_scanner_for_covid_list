@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:qr2/drawer.dart';
+import 'drawer.dart';
 import 'screenscaling.dart';
 
 import 'mreader.dart';
@@ -62,11 +62,16 @@ class _Page2ScreenState extends State<Page2Screen> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  DocumentSnapshot user = await FirebaseFirestore.instance
+                      .collection('USERS')
+                      .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                      .get();
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UserInformation()));
+                          builder: (context) =>
+                              UserInformation(type: user['user_type'])));
                 },
                 child: Text("see medical records"),
               ),

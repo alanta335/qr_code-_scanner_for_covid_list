@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr2/drawer.dart';
+import 'drawer.dart';
 import 'screenscaling.dart';
 
 class AboutUs extends StatefulWidget {

@@ -105,6 +105,7 @@ class _PRecordState extends State<PRecord> {
                     onPressed: () async {
                       print("\n\n\n\n${data['bp']}");
                       var postData = await createAlbum(
+                          data['weight'].toString(),
                           data['bp'].toString(),
                           data['height'].toString(),
                           data['oxy'].toString(),
@@ -136,6 +137,7 @@ class Album {
   Album({
     required this.bp,
     required this.height,
+    required this.weight,
     required this.oxy,
     required this.pid,
     required this.sleep,
@@ -145,7 +147,7 @@ class Album {
 
   String bp;
   String height;
-
+  String weight;
   String oxy;
   String pid;
   String sleep;
@@ -160,6 +162,7 @@ class Album {
         sleep: json["sleep"],
         sug: json["sug"],
         temp: json["temp"],
+        weight: json["weight"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -170,11 +173,12 @@ class Album {
         "sleep": sleep,
         "sug": sug,
         "temp": temp,
+        "weight": weight,
       };
 }
 
 Future<http.Response> createAlbum(String bp, String height, String pid,
-    String oxy, String sug, String temp, String sleep) {
+    String oxy, String sug, String temp, String sleep, String weight) {
   return http.post(
     Uri.parse('http://sfbsgda.pythonanywhere.com/cal'),
     headers: <String, String>{
@@ -183,6 +187,7 @@ Future<http.Response> createAlbum(String bp, String height, String pid,
     body: jsonEncode(<String, String>{
       "bp": bp,
       "height": height,
+      "weight": weight,
       "oxy": oxy,
       "pid": pid,
       "sleep": sleep,

@@ -29,11 +29,16 @@ class _DoctorlistState extends State<Doctorlist> {
         if (snapshot.hasError) {
           Alert(
                   context: context,
-                  closeFunction: () {
+                  closeFunction: () async {
+                    DocumentSnapshot user = await FirebaseFirestore.instance
+                        .collection('USERS')
+                        .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                        .get();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => UserInformation()));
+                            builder: (context) =>
+                                UserInformation(type: user['user_type'])));
                   },
                   title: "Error!",
                   //style: alertStyle,
@@ -84,8 +89,8 @@ class _DoctorlistState extends State<Doctorlist> {
       },
     );
   }
-  _callNumber(String telno) async{
-  
-  bool? res = await FlutterPhoneDirectCaller.callNumber(telno);
-}
+
+  _callNumber(String telno) async {
+    bool? res = await FlutterPhoneDirectCaller.callNumber(telno);
+  }
 }

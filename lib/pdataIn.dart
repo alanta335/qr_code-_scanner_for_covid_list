@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:qr2/drawer.dart';
 
+import 'drawer.dart';
 import 'mreader.dart';
 
 class PdataIn extends StatefulWidget {
@@ -216,10 +216,15 @@ class _PdataInState extends State<PdataIn> {
                       'pain': painController.text,
                       'other': otherController.text,
                     });
+                    DocumentSnapshot users = await FirebaseFirestore.instance
+                        .collection('USERS')
+                        .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                        .get();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => UserInformation()));
+                            builder: (context) =>
+                                UserInformation(type: users['user_type'])));
                   },
                   child: Text("save patient data"),
                 ),

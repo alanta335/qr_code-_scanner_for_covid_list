@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:qr2/docupload.dart';
-import 'package:qr2/mreader.dart';
-import 'package:qr2/nearbyDr.dart';
-import 'package:qr2/serachpage.dart';
-import 'package:qr2/sospage.dart';
-import 'package:qr2/vstatus.dart';
 
+import 'docupload.dart';
 import 'help.dart';
+import 'mreader.dart';
+import 'nearbyDr.dart';
 import 'qrGenerator.dart';
 import 'qrScanner.dart';
 import 'screenscaling.dart';
 import 'about_us.dart';
 import 'main.dart';
+import 'serachpage.dart';
+import 'sospage.dart';
 import 'userprofile.dart';
+import 'vstatus.dart';
 
 class CmnDrawer extends StatelessWidget {
   @override
@@ -198,11 +198,16 @@ class CmnDrawer extends StatelessWidget {
                 child: ListTile(
                   title: Text('consulted',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () {
+                  onTap: () async {
+                    DocumentSnapshot user = await FirebaseFirestore.instance
+                        .collection('USERS')
+                        .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                        .get();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => UserInformation()));
+                            builder: (context) =>
+                                UserInformation(type: user['user_type'])));
                   },
                 ),
               ),
