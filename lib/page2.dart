@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'drawer.dart';
+import 'package:qr2/drawer.dart';
 import 'screenscaling.dart';
 
 import 'mreader.dart';
@@ -10,73 +10,95 @@ class Page2Screen extends StatefulWidget {
   final data, data2;
   Page2Screen({@required this.data, @required this.data2});
   @override
-  _Page2ScreenState createState() => _Page2ScreenState(pid: data, x1: data2);
+  _Page2ScreenState createState() =>
+      _Page2ScreenState(storeid: data, x1: data2);
 }
 
 class _Page2ScreenState extends State<Page2Screen> {
-  var pid;
+  var storeid;
   DocumentSnapshot? x1;
-  _Page2ScreenState({@required this.pid, @required this.x1});
+  _Page2ScreenState({@required this.storeid, @required this.x1});
   TextEditingController messageController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: CmnDrawer(),
       appBar: AppBar(
-        title: Text('Patient Details'),
+        title: Text('Store Details'),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(
-                  'Store Name: ${x1!['name']}',
-                  style: TextStyle(fontSize: 10),
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                'Store Name: ${x1!['name']}',
+                style: TextStyle(fontSize: 25),
               ),
-              Center(
-                child: Text(
-                  "Phone Number: ${x1!['pno']}",
-                  style: TextStyle(fontSize: 10),
-                ),
+            ),
+            Center(
+              child: Text(
+                "Phone Number: ${x1!['pno']}",
+                style: TextStyle(fontSize: 25),
               ),
-              Center(
-                child: Text(
-                  "Email ID: ${x1!['email']}",
-                  style: TextStyle(fontSize: 10),
-                ),
+            ),
+            Center(
+              child: Text(
+                "Email ID: ${x1!['email']}",
+                style: TextStyle(fontSize: 25),
               ),
-              Center(
-                child: Text(
-                  "Location: ${x1!['addres']}",
-                  style: TextStyle(fontSize: 10),
-                ),
+            ),
+            Center(
+              child: Text(
+                "Location: ${x1!['addres']}",
+                style: TextStyle(fontSize: 20),
               ),
-              Center(
-                child: Text(
-                  "Vaccinated: ${x1!['vaccination_status']}",
-                  style: TextStyle(fontSize: 10),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  DocumentSnapshot user = await FirebaseFirestore.instance
-                      .collection('USERS')
-                      .doc('${FirebaseAuth.instance.currentUser!.uid}')
-                      .get();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              UserInformation(type: user['user_type'])));
-                },
-                child: Text("See medical records"),
-              ),
-            ],
-          ),
+            ),
+            ElevatedButton(
+              style: x,
+              onPressed: () async {
+                DocumentSnapshot user = await FirebaseFirestore.instance
+                    .collection('USERS')
+                    .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                    .get();
+                DocumentSnapshot store = await FirebaseFirestore.instance
+                    .collection('USERS')
+                    .doc('$storeid')
+                    .get();
+                FirebaseFirestore.instance
+                    .collection('USERS')
+                    .doc('${FirebaseAuth.instance.currentUser!.uid}')
+                    .collection('visited')
+                    .doc()
+                    .set({
+                  'name': store['name'],
+                  'address': store['addres'],
+                  'phno': store['pno'],
+                  'visitedId': store['userId'],
+                  'time': DateTime.now().toString(),
+                  'vaccination_status': store['vaccination_status'],
+                });
+                print(store['name']);
+                print(user['name']);
+                FirebaseFirestore.instance
+                    .collection('USERS')
+                    .doc('$storeid')
+                    .collection('visited')
+                    .doc()
+                    .set({
+                  'name': user['name'],
+                  'address': user['addres'],
+                  'phno': user['pno'],
+                  'visitedId': user['userId'],
+                  'time': DateTime.now().toString(),
+                  'vaccination_status': user['vaccination_status'],
+                });
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserInformation()));
+              },
+              child: Text('Add Data'),
+            ),
+          ],
         ),
       ),
     );

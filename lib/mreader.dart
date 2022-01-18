@@ -5,18 +5,13 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'drawer.dart';
-import 'pmrecord.dart';
 
 class UserInformation extends StatefulWidget {
-  final type;
-  const UserInformation({required this.type});
   @override
-  _UserInformationState createState() => _UserInformationState(type: type);
+  _UserInformationState createState() => _UserInformationState();
 }
 
 class _UserInformationState extends State<UserInformation> {
-  final type;
-  _UserInformationState({required this.type});
   @override
   Widget build(BuildContext context) {
     //var c;
@@ -29,22 +24,12 @@ class _UserInformationState extends State<UserInformation> {
       animationType: AnimationType.grow,
       animationDuration: Duration(milliseconds: 400),
     );
-    String s = "";
-    if (type == 'true') {
-      setState(() {
-        s = "Doctors visited";
-      });
-    } else {
-      setState(() {
-        s = "Patients Consulted";
-      });
-    }
     Query users = FirebaseFirestore.instance
         .collection('USERS')
         .doc('${FirebaseAuth.instance.currentUser!.uid}')
-        .collection('$s')
+        .collection('visited')
         .orderBy('time', descending: true);
-
+    //.collection('visited');
     print(FirebaseAuth.instance.currentUser!.uid);
     return StreamBuilder<QuerySnapshot>(
       stream: users.snapshots(),
@@ -56,7 +41,7 @@ class _UserInformationState extends State<UserInformation> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => UserInformation(type: type)));
+                            builder: (context) => UserInformation()));
                   },
                   title: "Error!",
                   style: alertStyle,
@@ -86,24 +71,6 @@ class _UserInformationState extends State<UserInformation> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               return Card(
                 child: ListTile(
-                  onLongPress: () async {
-                    DocumentSnapshot patiant = await FirebaseFirestore.instance
-                        .collection('USERS')
-                        .doc('${document.get('visitedId').toString()}')
-                        .collection('reading')
-                        .doc('${document.get('time').toString()}')
-                        .get();
-                    print(
-                        '${document.get('visitedId').toString()}---------------${document.get('time').toString().substring(0, 16)}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PRecord(
-                          data: patiant,
-                        ),
-                      ),
-                    );
-                  },
                   title: Text('${document.get('name')}'),
                   subtitle: Text(
                       'Address : ${document.get('address')}\nVisited on ${document.get('time')}'),

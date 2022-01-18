@@ -1,20 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:qr2/mreader.dart';
+import 'package:qr2/vstatus.dart';
 
-import 'docupload.dart';
 import 'help.dart';
-import 'mreader.dart';
-import 'nearbyDr.dart';
-import 'qrGenerator.dart';
-import 'qrScanner.dart';
 import 'screenscaling.dart';
 import 'about_us.dart';
 import 'main.dart';
-import 'serachpage.dart';
-import 'sospage.dart';
 import 'userprofile.dart';
-import 'vstatus.dart';
 
 class CmnDrawer extends StatelessWidget {
   @override
@@ -48,7 +42,7 @@ class CmnDrawer extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      "V-Scan",
+                      "CoViQrR",
                       style: TextStyle(
                           color: Color(0xFFFFFFFF),
                           fontWeight: FontWeight.bold,
@@ -92,122 +86,13 @@ class CmnDrawer extends StatelessWidget {
                 shadowColor: Color(0xFF501474),
                 color: Colors.transparent,
                 child: ListTile(
-                  title: Text('Share my QR',
+                  title: Text('Visited Data',
                       style: TextStyle(color: Color(0xFFFFFFFF))),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => GeneratePage(),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Card(
-                margin: EdgeInsets.only(right: 10),
-                shadowColor: Color(0xFF501474),
-                color: Colors.transparent,
-                child: ListTile(
-                  title: Text('Scan a QR',
-                      style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => QRViewExample(),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Card(
-                margin: EdgeInsets.only(right: 10),
-                shadowColor: Color(0xFF501474),
-                color: Colors.transparent,
-                child: ListTile(
-                  title: Text('Nearby Doctors',
-                      style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Nearby()));
-                  },
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Card(
-                margin: EdgeInsets.only(right: 10),
-                shadowColor: Color(0xFF501474),
-                color: Colors.transparent,
-                child: ListTile(
-                  title: Text('Search Patients',
-                      style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Search()));
-                  },
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Card(
-                margin: EdgeInsets.only(right: 10),
-                shadowColor: Color(0xFF501474),
-                color: Colors.transparent,
-                child: ListTile(
-                  title:
-                      Text('SOS', style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SosPage()));
-                  },
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Card(
-                margin: EdgeInsets.only(right: 10),
-                shadowColor: Color(0xFF501474),
-                color: Colors.transparent,
-                child: ListTile(
-                  title: Text('Upload files',
-                      style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => DocUpload()));
-                  },
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Card(
-                margin: EdgeInsets.only(right: 10),
-                shadowColor: Color(0xFF501474),
-                color: Colors.transparent,
-                child: ListTile(
-                  title: Text('Consulted Doctors',
-                      style: TextStyle(color: Color(0xFFFFFFFF))),
-                  onTap: () async {
-                    DocumentSnapshot user = await FirebaseFirestore.instance
-                        .collection('USERS')
-                        .doc('${FirebaseAuth.instance.currentUser!.uid}')
-                        .get();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                UserInformation(type: user['user_type'])));
+                            builder: (context) => UserInformation()));
                   },
                 ),
               ),

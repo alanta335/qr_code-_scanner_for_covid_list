@@ -2,8 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-
-import 'screenscaling.dart';
+import 'package:qr2/screenscaling.dart';
 
 class VaccinationStatus extends StatefulWidget {
   @override
@@ -37,7 +36,7 @@ class _VaccinationStatusState extends State<VaccinationStatus> {
                     .collection('USERS')
                     .doc('${FirebaseAuth.instance.currentUser!.uid}')
                     .update({
-                  'Vaccination_status': v,
+                  'vaccination_status': v,
                 });
               },
               child: Text('Change status'))

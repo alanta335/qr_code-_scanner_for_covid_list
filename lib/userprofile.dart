@@ -64,7 +64,7 @@ class UserProfile extends StatelessWidget {
               indent: 130,
               endIndent: 130,
               thickness: 2,
-              color: Colors.deepPurple.shade400,
+              color: Colors.grey,
             ),
             Container(
               child: Column(
@@ -73,35 +73,35 @@ class UserProfile extends StatelessWidget {
                     'Name: $name',
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.deepPurple.shade400,
+                      color: Colors.grey.shade800,
                     ),
                   ),
                   Text(
                     'Address: $addres',
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.deepPurple.shade400,
+                      color: Colors.grey.shade800,
                     ),
                   ),
                   Text(
                     'Phone NO: $pno',
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.deepPurple.shade400,
+                      color: Colors.grey.shade800,
                     ),
                   ),
                   Text(
                     'Email: $email',
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.deepPurple.shade400,
+                      color: Colors.grey.shade800,
                     ),
                   ),
                   Text(
                     'Vaccination status: $vstatus',
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.deepPurple.shade400,
+                      color: Colors.grey.shade800,
                     ),
                   ),
                 ],

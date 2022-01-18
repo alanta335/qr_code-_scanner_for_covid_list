@@ -2,12 +2,11 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:qr2/screenscaling.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'drawer.dart';
 import 'main.dart';
 import 'page2.dart';
-import 'pdataIn.dart';
-import 'screenscaling.dart';
 
 class QRViewExample extends StatefulWidget {
   @override
@@ -15,7 +14,6 @@ class QRViewExample extends StatefulWidget {
 }
 
 var r;
-var a = "self check data enter";
 
 class _QRViewExampleState extends State<QRViewExample> {
   Barcode? result;
@@ -38,7 +36,6 @@ class _QRViewExampleState extends State<QRViewExample> {
     return Scaffold(
       drawer: CmnDrawer(),
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple.shade400,
         title: Text('Scan the QR Code'),
       ),
       body: Column(
@@ -109,59 +106,27 @@ class _QRViewExampleState extends State<QRViewExample> {
                           child: ElevatedButton(
                             style: x,
                             onPressed: () async {
-                              DocumentSnapshot patiant = await FirebaseFirestore
+                              DocumentSnapshot store = await FirebaseFirestore
                                   .instance
                                   .collection('USERS')
                                   .doc('$r')
                                   .get();
                               if (r != null) {
                                 Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Page2Screen(
-                                      data: r,
-                                      data2: patiant,
-                                    ),
-                                  ),
-                                );
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Page2Screen(
+                                              data: r,
+                                              data2: store,
+                                            )));
                               }
                             },
-                            child: Text('see patiant details',
+                            child: Text('Add Data',
                                 style: TextStyle(fontSize: 20)),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  ElevatedButton(
-                    style: x,
-                    onPressed: () async {
-                      DocumentSnapshot patient = await FirebaseFirestore
-                          .instance
-                          .collection('USERS')
-                          .doc('$r')
-                          .get();
-                      if (r != null) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PdataIn(
-                                      pIDdata: r,
-                                      pdata: patient,
-                                      type: 0,
-                                    )));
-                      } else {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PdataIn(
-                                      pIDdata: r,
-                                      pdata: patient,
-                                      type: 4,
-                                    )));
-                      }
-                    },
-                    child: Text('$a', style: TextStyle(fontSize: 20)),
                   ),
                 ],
               ),
@@ -200,9 +165,6 @@ class _QRViewExampleState extends State<QRViewExample> {
       setState(() {
         result = scanData;
         r = result!.code;
-        if (r != null) {
-          a = "Add patient Data";
-        }
       });
     });
   }

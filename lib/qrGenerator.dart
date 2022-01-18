@@ -20,8 +20,7 @@ class GeneratePageState extends State<GeneratePage> {
     return Scaffold(
       drawer: CmnDrawer(),
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple.shade400,
-        title: Text('Doctor-QR code'),
+        title: Text('QR Code Generator'),
         actions: <Widget>[],
       ),
       body: Container(
@@ -35,7 +34,7 @@ class GeneratePageState extends State<GeneratePage> {
               data: qrData,
             ),
             Text(
-              "Show this QR to the patients",
+              "Show this QR to the customer",
               style: TextStyle(fontSize: 20.0),
             ),
           ],
